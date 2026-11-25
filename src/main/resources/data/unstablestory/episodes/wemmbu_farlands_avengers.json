@@ -9,7 +9,7 @@
     { "type": "title", "title": "The Avengers", "subtitle": "Wemmbu, the Far Lands" },
     { "type": "player_kit", "kit": "wemmbu_farlands" },
     { "type": "narrate", "text": "Wemmbu and Eggchan are deep in the Far Lands, scraping together what they need to survive." },
-    { "type": "player_command", "command": "farlands" },
+    { "type": "player_command", "command": "farlands normal" },
     { "type": "wait", "ticks": 60 },
     { "type": "set_anchor" },
     { "type": "spawn", "bots": [
