@@ -14,7 +14,7 @@ Every push builds the mod automatically. Open the **Actions** tab, click the new
 2. [VexBot](https://modrinth.com/mod/vexbot) for 1.21.11.
 3. [Unstable Generation](https://modrinth.com/mod/unstable-generation) for 1.21.11 (not used yet).
 4. This mod's `.jar` in your `mods` folder.
-5. Load the kits in `kits/` into VexBot so the kit names match (for example `prisoner`, `sargelaw_prison_break_bot`).
+5. That's it for kits: when Minecraft starts, the mod copies its kits into the `vexbot_kits` folder in your Minecraft folder, where VexBot reads them.
 
 ## Play
 
@@ -41,4 +41,4 @@ Step types: `title`, `say`, `narrate`, `wait`, `teleport`, `effect`, `clear_effe
 
 ## Kits
 
-`kits/` holds the VexBot kits used by Wemmbu's episodes, picked from a community kit pack. Their original creators are unknown, so keep this repository private until we know they can be shared.
+`src/main/resources/data/unstablestory/kits/` holds the VexBot kits used by Wemmbu's episodes, picked from a community kit pack. Their original creators are unknown, so keep this repository private until we know they can be shared.

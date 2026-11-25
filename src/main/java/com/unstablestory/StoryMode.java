@@ -4,6 +4,7 @@ import com.unstablestory.config.StoryConfig;
 import com.unstablestory.story.Episode;
 import com.unstablestory.story.StoryCommands;
 import com.unstablestory.story.StoryManager;
+import com.unstablestory.vex.KitInstaller;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ public class StoryMode implements ModInitializer {
     @Override
     public void onInitialize() {
         StoryConfig.load();
+        KitInstaller.install();
         Episode.loadAll();
         StoryManager.register();
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
