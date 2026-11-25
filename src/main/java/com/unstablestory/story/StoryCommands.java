@@ -21,6 +21,7 @@ import net.minecraft.server.level.ServerPlayer;
  * /story stop               leave the episode
  * /story reload             reload episodes and the VexBot command file
  * /story testbot           spawn one test bot next to you with the spawn command, then remove it with /story testbot remove
+ * /story clearbots         remove every VexBot bot (runs /vexbot clearbots)
  * /story debug on|off       show every command the story runs, and its errors, in your chat
  */
 public final class StoryCommands {
@@ -42,6 +43,11 @@ public final class StoryCommands {
                             VexBridge.remove(ctx.getSource().getServer(), "StoryTestBot");
                             return 1;
                         })))
+                .then(Commands.literal("clearbots").executes(ctx -> {
+                    VexBridge.runRaw(ctx.getSource().getServer(), "vexbot clearbots");
+                    ctx.getSource().sendSuccess(() -> Component.literal("Removed all VexBot bots."), false);
+                    return 1;
+                }))
                 .then(Commands.literal("debug")
                         .then(Commands.literal("on").executes(ctx -> debug(ctx, true)))
                         .then(Commands.literal("off").executes(ctx -> debug(ctx, false)))));
@@ -106,6 +112,7 @@ public final class StoryCommands {
         var p = player.blockPosition();
         VexBridge.spawnOnTeam(ctx.getSource().getServer(), "story", "StoryTestBot", "sargelaw_prison_break_bot",
                 p.getX() + 3, p.getY(), p.getZ());
+        VexBridge.giveKit(ctx.getSource().getServer(), "StoryTestBot", "sargelaw_prison_break_bot");
         ctx.getSource().sendSuccess(() -> Component.literal(
                 "Tried to spawn StoryTestBot 3 blocks away in SargeLAW's prison kit. Turn on /story debug on first to see any errors."), false);
         return 1;

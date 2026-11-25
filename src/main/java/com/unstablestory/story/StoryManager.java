@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 
 import java.util.HashMap;
@@ -36,16 +37,47 @@ public final class StoryManager {
         // A bot we spawned has died: tell its session, so fights can end.
         ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> onDeath(entity));
 
+        // Peaceful story bots (guards on patrol) can't be hurt, so they never turn on
+        // the player, and they can't hurt the player either.
+        ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> {
+            StoryBot target = findBot(entity.getUUID());
+            if (target != null && !target.hostile) {
+                return false;
+            }
+            Entity attacker = source.getEntity();
+            if (attacker != null && entity instanceof ServerPlayer) {
+                StoryBot bot = findBot(attacker.getUUID());
+                if (bot != null && !bot.hostile) {
+                    return false;
+                }
+            }
+            return true;
+        });
+
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> stop(server, handler.player));
     }
 
     private static void onDeath(LivingEntity entity) {
-        String name = entity.getName().getString();
         for (EpisodeSession session : SESSIONS.values()) {
-            if (session.ownsBot(name)) {
-                session.onBotDied(name);
+            StoryBot bot = session.findBot(entity.getUUID());
+            if (bot != null) {
+                session.onBotDied(bot);
             }
         }
+    }
+
+    static StoryBot findBot(UUID entity) {
+        for (EpisodeSession session : SESSIONS.values()) {
+            StoryBot bot = session.findBot(entity);
+            if (bot != null) {
+                return bot;
+            }
+        }
+        return null;
+    }
+
+    static boolean isTrackedBot(UUID entity) {
+        return findBot(entity) != null;
     }
 
     private static void tick(MinecraftServer server) {

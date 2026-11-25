@@ -26,15 +26,15 @@ public final class StoryConfig {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     /** Raise this when the defaults change, so old command files get replaced. */
-    private static final int VERSION = 3;
+    private static final int VERSION = 4;
 
     public static final Map<String, String> DEFAULT_COMMANDS = new LinkedHashMap<>();
     static {
         DEFAULT_COMMANDS.put("_version", Integer.toString(VERSION));
-        // From the user's VexBot guide: "/vexbot spawn Steve 10 64 -20", then give the kit.
+        // From the user's VexBot guide: "/vexbot spawn Steve 10 64 -20". The kit, skin and
+        // patrol are given afterwards, once the mod has found the bot's real name.
         // Teams are left out until we know VexBot's team syntax.
-        // Alternative to try: "vexbot team {team} spawn {name} {x} {y} {z} {kit}"
-        DEFAULT_COMMANDS.put("spawn_on_team", "vexbot spawn {name} {x} {y} {z} ;; vexbot givekit {name} {kit}");
+        DEFAULT_COMMANDS.put("spawn_on_team", "vexbot spawn {name} {x} {y} {z}");
         DEFAULT_COMMANDS.put("set_skin", "vexbot nick {name} {name} {skin}");
         DEFAULT_COMMANDS.put("give_kit", "vexbot givekit {target} {kit}");
         DEFAULT_COMMANDS.put("wander", "vexbot wander {name} {radius} {x} {y} {z}");
