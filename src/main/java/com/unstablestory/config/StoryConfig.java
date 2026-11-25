@@ -25,9 +25,15 @@ import java.util.Map;
 public final class StoryConfig {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
+    /** Raise this when the defaults change, so old command files get replaced. */
+    private static final int VERSION = 2;
+
     public static final Map<String, String> DEFAULT_COMMANDS = new LinkedHashMap<>();
     static {
-        DEFAULT_COMMANDS.put("spawn_on_team", "vexbot team {team} spawn {name} {x} {y} {z} {kit}");
+        DEFAULT_COMMANDS.put("_version", Integer.toString(VERSION));
+        // Spawn, move into place, then give the kit. Teams are left out until we know VexBot's team syntax.
+        // Alternative to try: "vexbot team {team} spawn {name} {x} {y} {z} {kit}"
+        DEFAULT_COMMANDS.put("spawn_on_team", "vexbot spawn {name} ;; tp {name} {x} {y} {z} ;; vexbot randomkit {name} {kit}");
         DEFAULT_COMMANDS.put("set_skin", "vexbot nick {name} {name} {skin}");
         DEFAULT_COMMANDS.put("give_kit", "vexbot randomkit {target} {kit}");
         DEFAULT_COMMANDS.put("wander", "vexbot wander {name} {radius} {x} {y} {z}");
@@ -46,12 +52,25 @@ public final class StoryConfig {
         return commands.getOrDefault(key, DEFAULT_COMMANDS.get(key));
     }
 
+    private static int fileVersion(Path file) {
+        try (Reader r = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
+            JsonObject obj = JsonParser.parseReader(r).getAsJsonObject();
+            return obj.has("_version") ? Integer.parseInt(obj.get("_version").getAsString()) : 0;
+        } catch (IOException | RuntimeException e) {
+            return 0;
+        }
+    }
+
     /** Reads the command file, writing the defaults first if it does not exist yet. */
     public static void load() {
         Path file = dir().resolve("vexbot_commands.json");
         try {
             Files.createDirectories(dir());
             Files.createDirectories(dir().resolve("episodes"));
+            if (Files.exists(file) && fileVersion(file) < VERSION) {
+                Files.move(file, dir().resolve("vexbot_commands.old.json"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+                StoryMode.LOGGER.info("Replaced an old {} (kept as vexbot_commands.old.json)", file.getFileName());
+            }
             if (!Files.exists(file)) {
                 try (Writer w = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
                     GSON.toJson(DEFAULT_COMMANDS, w);

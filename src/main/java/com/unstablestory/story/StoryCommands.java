@@ -5,6 +5,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.unstablestory.config.StoryConfig;
+import com.unstablestory.vex.VexBridge;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -19,6 +20,8 @@ import net.minecraft.server.level.ServerPlayer;
  * /story retry              go back to the last checkpoint
  * /story stop               leave the episode
  * /story reload             reload episodes and the VexBot command file
+ * /story testbot           spawn one test bot next to you with the spawn command, then remove it with /story testbot remove
+ * /story debug on|off       show every command the story runs, and its errors, in your chat
  */
 public final class StoryCommands {
     private StoryCommands() {}
@@ -33,7 +36,15 @@ public final class StoryCommands {
                 .then(Commands.literal("next").executes(StoryCommands::next))
                 .then(Commands.literal("retry").executes(StoryCommands::retry))
                 .then(Commands.literal("stop").executes(StoryCommands::stop))
-                .then(Commands.literal("reload").executes(StoryCommands::reload)));
+                .then(Commands.literal("reload").executes(StoryCommands::reload))
+                .then(Commands.literal("testbot").executes(StoryCommands::testBot)
+                        .then(Commands.literal("remove").executes(ctx -> {
+                            VexBridge.remove(ctx.getSource().getServer(), "StoryTestBot");
+                            return 1;
+                        })))
+                .then(Commands.literal("debug")
+                        .then(Commands.literal("on").executes(ctx -> debug(ctx, true)))
+                        .then(Commands.literal("off").executes(ctx -> debug(ctx, false)))));
     }
 
     private static int list(CommandContext<CommandSourceStack> ctx) {
@@ -87,6 +98,25 @@ public final class StoryCommands {
             ctx.getSource().sendFailure(Component.literal("You are not in an episode."));
             return 0;
         }
+        return 1;
+    }
+
+    private static int testBot(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        ServerPlayer player = ctx.getSource().getPlayerOrException();
+        var p = player.blockPosition();
+        VexBridge.spawnOnTeam(ctx.getSource().getServer(), "story", "StoryTestBot", "sargelaw_prison_break_bot",
+                p.getX() + 3, p.getY(), p.getZ());
+        ctx.getSource().sendSuccess(() -> Component.literal(
+                "Tried to spawn StoryTestBot 3 blocks away in SargeLAW's prison kit. Turn on /story debug on first to see any errors."), false);
+        return 1;
+    }
+
+    private static int debug(CommandContext<CommandSourceStack> ctx, boolean on) throws CommandSyntaxException {
+        ServerPlayer player = ctx.getSource().getPlayerOrException();
+        VexBridge.setDebug(on ? player.getUUID() : null);
+        ctx.getSource().sendSuccess(() -> Component.literal(on
+                ? "Debug on: every command the story runs, and any error, will show here."
+                : "Debug off."), false);
         return 1;
     }
 
