@@ -5,82 +5,350 @@
   "video": "I Explored Beyond the Minecraft Fartherlands (Wemmbu, 15 Jul 2025) and the Spikelands fight",
   "status": "DRAFT: beats from the Unstable Universe fan wiki, dialogue is placeholder text. Check against the video.",
   "steps": [
-    { "type": "note", "text": "Part 1: into the Far Lands. Needs Unstable Generation for /farlands." },
-    { "type": "title", "title": "The Avengers", "subtitle": "Wemmbu, the Far Lands" },
-    { "type": "player_kit", "kit": "wemmbu_farlands" },
-    { "type": "narrate", "text": "Wemmbu and Eggchan are deep in the Far Lands, scraping together what they need to survive." },
-    { "type": "player_command", "command": "farlands normal" },
-    { "type": "wait", "ticks": 60 },
-    { "type": "set_anchor" },
-    { "type": "spawn", "bots": [
-      { "name": "eggchan", "kit": "eggchan_farlands", "ally": true, "follow": true, "x": 2, "z": 2 }
-    ] },
-    { "type": "say", "speaker": "eggchan", "color": "yellow", "text": "[placeholder] This place is so broken. Let's find some gear." },
-    { "type": "checkpoint" },
-
-    { "type": "note", "text": "Part 2: the ambush. Wemmbu hides until Fantst finds him, then escapes." },
-    { "type": "narrate", "text": "Then a group appears on the horizon: Wemmbu's old enemies, together. They call themselves the Avengers." },
-    { "type": "spawn", "bots": [
-      { "name": "Jaden_MAN", "kit": "jaden_man_farlands", "x": 34, "z": 0 },
-      { "name": "FlameFrags", "kit": "flamefrags_avengers", "x": 34, "z": 4 },
-      { "name": "WyLL", "kit": "wyll_farlands", "x": 34, "z": -4 },
-      { "name": "Fantst", "kit": "fantst_farlands", "x": 36, "z": 8 },
-      { "name": "Baablu", "kit": "baablu_farlands", "x": 36, "z": -8 },
-      { "name": "Spongs", "kit": "spongs_willsion_farlands", "x": 38, "z": 2 },
-      { "name": "Willsion", "kit": "spongs_willsion_farlands", "x": 38, "z": -2 }
-    ] },
-    { "type": "say", "speaker": "Jaden_MAN", "color": "red", "text": "[placeholder] There he is. Get him!" },
-    { "type": "escape", "text": "Hide! Get 60 blocks away from every Avenger, or survive 90 seconds", "distance": 60, "seconds": 90 },
-    { "type": "despawn_enemies" },
-    { "type": "narrate", "text": "Fantst found Wemmbu's hiding spot, but Wemmbu slipped away. The Avengers give up for now." },
-    { "type": "checkpoint" },
-
-    { "type": "note", "text": "Part 3: the second attack. Lakerek's castle happens before this; not playable yet." },
-    { "type": "narrate", "text": "After the fight at Lakerek's castle, the Avengers jump them again. This time FlameFrags, Sharpness and Jaden_MAN aren't with them, and Spongs's gear is weaker." },
-    { "type": "spawn", "bots": [
-      { "name": "Spongs", "kit": "spongs_willsion_farlands", "x": 12, "z": 0 },
-      { "name": "Willsion", "kit": "spongs_willsion_farlands", "x": 12, "z": 3 },
-      { "name": "WyLL", "kit": "wyll_farlands", "x": 14, "z": -3 },
-      { "name": "Fantst", "kit": "fantst_farlands", "x": 15, "z": 5 },
-      { "name": "Baablu", "kit": "baablu_farlands", "x": 15, "z": -5 }
-    ] },
-    { "type": "fight", "text": "Fight them off, with Egg", "until_remaining": 1 },
-    { "type": "despawn_enemies" },
-    { "type": "say", "speaker": "Wemmbu", "color": "gold", "text": "[placeholder] Tell the rest of them: the spikes. We finish this there." },
-    { "type": "narrate", "text": "Wemmbu forces all but one of them to flee, and arranges a final fight at a spikes biome." },
-    { "type": "checkpoint" },
-
-    { "type": "note", "text": "Part 4: the Spikelands. Wemmbu no longer has his mace here (Sharpness took it)." },
-    { "type": "despawn", "bots": ["eggchan"] },
-    { "type": "player_command", "command": "farlands spikes" },
-    { "type": "wait", "ticks": 60 },
-    { "type": "set_anchor" },
-    { "type": "command", "command": "clear {player} minecraft:mace" },
-    { "type": "spawn", "bots": [
-      { "name": "eggchan", "kit": "eggchan_farlands", "ally": true, "follow": true, "x": 2, "z": 2 }
-    ] },
-    { "type": "narrate", "text": "The Spikelands. Every Avenger is here." },
-    { "type": "spawn", "bots": [
-      { "name": "Jaden_MAN", "kit": "jaden_man_farlands", "x": 18, "z": 0 },
-      { "name": "FlameFrags", "kit": "flamefrags_avengers", "x": 18, "z": 4 },
-      { "name": "WyLL", "kit": "wyll_farlands", "x": 18, "z": -4 },
-      { "name": "Fantst", "kit": "fantst_farlands", "x": 20, "z": 8 },
-      { "name": "Baablu", "kit": "baablu_farlands", "x": 20, "z": -8 },
-      { "name": "Spongs", "kit": "spongs_willsion_farlands", "x": 22, "z": 2 },
-      { "name": "Willsion", "kit": "spongs_willsion_farlands", "x": 22, "z": -2 }
-    ] },
-    { "type": "say", "speaker": "Jaden_MAN", "color": "red", "text": "[placeholder] No more running, Wemmbu." },
-    { "type": "fight", "text": "Survive the Avengers", "until_remaining": 5, "max_seconds": 60 },
-    { "type": "narrate", "text": "The Avengers almost have them. Then FlameFrags turns on his own team." },
-    { "type": "switch_side", "bot": "FlameFrags", "to": "ally" },
-    { "type": "say", "speaker": "FlameFrags", "color": "gold", "text": "[placeholder] I'm done with this team." },
-    { "type": "fight", "text": "Fight beside Flame and Egg", "until_remaining": 2 },
-    { "type": "despawn_enemies" },
-    { "type": "narrate", "text": "The Avengers are scared off." },
-    { "type": "say", "speaker": "FlameFrags", "color": "gold", "text": "[placeholder] Here. Your mace. I don't need it." },
-    { "type": "command", "command": "give {player} minecraft:mace" },
-    { "type": "wait", "ticks": 40 },
-    { "type": "despawn_all" },
-    { "type": "title", "title": "The Avengers", "subtitle": "Episode complete" }
+    {
+      "type": "note",
+      "text": "Part 1: into the Far Lands. Needs Unstable Generation for /farlands."
+    },
+    {
+      "type": "title",
+      "title": "The Avengers",
+      "subtitle": "Wemmbu, the Far Lands"
+    },
+    {
+      "type": "player_kit",
+      "kit": "wemmbu_farlands"
+    },
+    {
+      "type": "narrate",
+      "text": "Wemmbu and Eggchan are deep in the Far Lands, scraping together what they need to survive."
+    },
+    {
+      "type": "player_command",
+      "command": "farlands normal"
+    },
+    {
+      "type": "wait",
+      "ticks": 60
+    },
+    {
+      "type": "find_arena",
+      "size": 20,
+      "max_step": 4
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "eggchan",
+          "kit": "eggchan_farlands",
+          "ally": true,
+          "follow": true,
+          "x": 0,
+          "z": 2
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "speaker": "eggchan",
+      "color": "yellow",
+      "text": "[placeholder] This place is so broken. Let's find some gear."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "note",
+      "text": "Part 2: the ambush. Wemmbu hides until Fantst finds him, then escapes."
+    },
+    {
+      "type": "narrate",
+      "text": "Then a group appears on the horizon: Wemmbu's old enemies, together. They call themselves the Avengers."
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "Jaden_MAN",
+          "kit": "jaden_man_farlands",
+          "x": 34,
+          "z": 0
+        },
+        {
+          "name": "FlameFrags",
+          "kit": "flamefrags_avengers",
+          "x": 34,
+          "z": 4
+        },
+        {
+          "name": "WyLL",
+          "kit": "wyll_farlands",
+          "x": 34,
+          "z": -4
+        },
+        {
+          "name": "Fantst",
+          "kit": "fantst_farlands",
+          "x": 36,
+          "z": 8
+        },
+        {
+          "name": "Baablu",
+          "kit": "baablu_farlands",
+          "x": 36,
+          "z": -8
+        },
+        {
+          "name": "Spongs",
+          "kit": "spongs_willsion_farlands",
+          "x": 38,
+          "z": 2
+        },
+        {
+          "name": "Willsion",
+          "kit": "spongs_willsion_farlands",
+          "x": 38,
+          "z": -2
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "speaker": "Jaden_MAN",
+      "color": "red",
+      "text": "[placeholder] There he is. Get him!"
+    },
+    {
+      "type": "escape",
+      "text": "Hide! Get 60 blocks away from every Avenger, or survive 90 seconds",
+      "distance": 60,
+      "seconds": 90
+    },
+    {
+      "type": "despawn_enemies"
+    },
+    {
+      "type": "narrate",
+      "text": "Fantst found Wemmbu's hiding spot, but Wemmbu slipped away. The Avengers give up for now."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "note",
+      "text": "Part 3: the second attack. Lakerek's castle happens before this; not playable yet."
+    },
+    {
+      "type": "narrate",
+      "text": "After the fight at Lakerek's castle, the Avengers jump them again. This time FlameFrags, Sharpness and Jaden_MAN aren't with them, and Spongs's gear is weaker."
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "Spongs",
+          "kit": "spongs_willsion_farlands",
+          "x": 12,
+          "z": 0
+        },
+        {
+          "name": "Willsion",
+          "kit": "spongs_willsion_farlands",
+          "x": 12,
+          "z": 3
+        },
+        {
+          "name": "WyLL",
+          "kit": "wyll_farlands",
+          "x": 14,
+          "z": -3
+        },
+        {
+          "name": "Fantst",
+          "kit": "fantst_farlands",
+          "x": 15,
+          "z": 5
+        },
+        {
+          "name": "Baablu",
+          "kit": "baablu_farlands",
+          "x": 15,
+          "z": -5
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "text": "Fight them off, with Egg",
+      "until_remaining": 1
+    },
+    {
+      "type": "despawn_enemies"
+    },
+    {
+      "type": "say",
+      "speaker": "Wemmbu",
+      "color": "gold",
+      "text": "[placeholder] Tell the rest of them: the spikes. We finish this there."
+    },
+    {
+      "type": "narrate",
+      "text": "Wemmbu forces all but one of them to flee, and arranges a final fight at a spikes biome."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "note",
+      "text": "Part 4: the Spikelands. Wemmbu no longer has his mace here (Sharpness took it)."
+    },
+    {
+      "type": "despawn",
+      "bots": [
+        "eggchan"
+      ]
+    },
+    {
+      "type": "player_command",
+      "command": "farlands spikes"
+    },
+    {
+      "type": "wait",
+      "ticks": 60
+    },
+    {
+      "type": "find_arena",
+      "size": 14,
+      "max_step": 5
+    },
+    {
+      "type": "command",
+      "command": "clear {player} minecraft:mace"
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "eggchan",
+          "kit": "eggchan_farlands",
+          "ally": true,
+          "follow": true,
+          "x": 0,
+          "z": 2
+        }
+      ]
+    },
+    {
+      "type": "narrate",
+      "text": "The Spikelands. Every Avenger is here."
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "Jaden_MAN",
+          "kit": "jaden_man_farlands",
+          "x": 18,
+          "z": 0
+        },
+        {
+          "name": "FlameFrags",
+          "kit": "flamefrags_avengers",
+          "x": 18,
+          "z": 4
+        },
+        {
+          "name": "WyLL",
+          "kit": "wyll_farlands",
+          "x": 18,
+          "z": -4
+        },
+        {
+          "name": "Fantst",
+          "kit": "fantst_farlands",
+          "x": 20,
+          "z": 8
+        },
+        {
+          "name": "Baablu",
+          "kit": "baablu_farlands",
+          "x": 20,
+          "z": -8
+        },
+        {
+          "name": "Spongs",
+          "kit": "spongs_willsion_farlands",
+          "x": 22,
+          "z": 2
+        },
+        {
+          "name": "Willsion",
+          "kit": "spongs_willsion_farlands",
+          "x": 22,
+          "z": -2
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "speaker": "Jaden_MAN",
+      "color": "red",
+      "text": "[placeholder] No more running, Wemmbu."
+    },
+    {
+      "type": "fight",
+      "text": "Survive the Avengers",
+      "until_remaining": 5,
+      "max_seconds": 60
+    },
+    {
+      "type": "narrate",
+      "text": "The Avengers almost have them. Then FlameFrags turns on his own team."
+    },
+    {
+      "type": "switch_side",
+      "bot": "FlameFrags",
+      "to": "ally"
+    },
+    {
+      "type": "say",
+      "speaker": "FlameFrags",
+      "color": "gold",
+      "text": "[placeholder] I'm done with this team."
+    },
+    {
+      "type": "fight",
+      "text": "Fight beside Flame and Egg",
+      "until_remaining": 2
+    },
+    {
+      "type": "despawn_enemies"
+    },
+    {
+      "type": "narrate",
+      "text": "The Avengers are scared off."
+    },
+    {
+      "type": "say",
+      "speaker": "FlameFrags",
+      "color": "gold",
+      "text": "[placeholder] Here. Your mace. I don't need it."
+    },
+    {
+      "type": "command",
+      "command": "give {player} minecraft:mace"
+    },
+    {
+      "type": "wait",
+      "ticks": 40
+    },
+    {
+      "type": "despawn_all"
+    },
+    {
+      "type": "title",
+      "title": "The Avengers",
+      "subtitle": "Episode complete"
+    }
   ]
 }
