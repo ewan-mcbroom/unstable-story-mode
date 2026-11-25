@@ -27,7 +27,7 @@ Every push builds the mod automatically. Open the **Actions** tab, click the new
 | `/story stop` | Leave the episode |
 | `/story reload` | Reload episodes and the VexBot command file |
 
-The episode happens around where you stand when you start it. Use a flat creative test world for now.
+Episodes that travel (such as the Far Lands one) need a world created with Unstable Generation installed. The mod then finds open ground for each scene by itself. In a bot `spawn`, `x` is blocks in front of the player, `z` is blocks to their right, and characters are moved to the nearest safe ground.
 
 ## Fixing VexBot commands without rebuilding
 

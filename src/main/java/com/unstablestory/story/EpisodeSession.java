@@ -11,7 +11,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.levelgen.Heightmap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +29,7 @@ public final class EpisodeSession {
     private final UUID playerId;
     private final Episode episode;
     private BlockPos anchor;
+    private float anchorYaw;
     private final InventoryBackup backup;
     private final List<StoryBot> bots = new ArrayList<>();
 
@@ -49,6 +49,7 @@ public final class EpisodeSession {
         this.playerId = player.getUUID();
         this.episode = episode;
         this.anchor = player.blockPosition();
+        this.anchorYaw = player.getYRot();
         this.backup = InventoryBackup.take(player);
     }
 
@@ -271,7 +272,24 @@ public final class EpisodeSession {
                     + str(s, "command", "").replace("{player}", name));
             case "set_anchor" -> {
                 anchor = player.blockPosition();
+                anchorYaw = player.getYRot();
                 VexBridge.debug(server, "Story anchor moved to " + anchor.toShortString());
+            }
+            case "find_arena" -> {
+                // Find open, fairly flat ground for this scene and put the player in the middle of it.
+                BlockPos arena = ScenePlacer.findArena(player.level(), player.blockPosition(),
+                        int_(s, "search", 96), int_(s, "size", 16), int_(s, "max_step", 3));
+                if (arena != null) {
+                    anchorYaw = player.getYRot();
+                    VexBridge.runRaw(server, "tp " + name + " " + (arena.getX() + 0.5) + " " + arena.getY() + " "
+                            + (arena.getZ() + 0.5) + " " + anchorYaw + " 0");
+                    anchor = arena;
+                    VexBridge.debug(server, "Scene placed at " + arena.toShortString());
+                } else {
+                    anchor = player.blockPosition();
+                    anchorYaw = player.getYRot();
+                    VexBridge.debug(server, "No open ground found nearby; the scene stays where you are");
+                }
             }
             case "switch_side" -> {
                 StoryBot b = bot(str(s, "bot", ""));
@@ -395,27 +413,32 @@ public final class EpisodeSession {
         }
     }
 
-    /** A position from the episode file, as an offset from the anchor. Without "y" it is the ground there. */
+    /**
+     * A position from the episode file. "x" is blocks in front of the player (where
+     * they faced when the scene was set up), "z" is blocks to their right, and "y"
+     * is up. Characters are then moved to the nearest safe ground at about the
+     * scene's height, so they don't land on a spike or inside a wall.
+     */
     private BlockPos pos(JsonObject s) {
-        int x = anchor.getX() + int_(s, "x", 0);
-        int z = anchor.getZ() + int_(s, "z", 0);
-        if (s.has("y")) {
-            return new BlockPos(x, anchor.getY() + int_(s, "y", 0), z);
+        double yaw = Math.toRadians(anchorYaw);
+        double forward = int_(s, "x", 0);
+        double right = int_(s, "z", 0);
+        int x = anchor.getX() + (int) Math.round(-Math.sin(yaw) * forward - Math.cos(yaw) * right);
+        int z = anchor.getZ() + (int) Math.round(Math.cos(yaw) * forward - Math.sin(yaw) * right);
+        int y = anchor.getY() + int_(s, "y", 0);
+        Level level = level();
+        if (level == null || s.has("exact")) {
+            return new BlockPos(x, y, z);
         }
-        return new BlockPos(x, surfaceY(x, z), z);
+        return ScenePlacer.safeSpot(level, x, z, y);
     }
 
-    private int surfaceY(int x, int z) {
+    private Level level() {
         if (server == null) {
-            return anchor.getY();
+            return null;
         }
         ServerPlayer player = server.getPlayerList().getPlayer(playerId);
-        if (player == null) {
-            return anchor.getY();
-        }
-        Level level = player.level();
-        int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
-        return y > level.getMinY() ? y : anchor.getY();
+        return player == null ? null : player.level();
     }
 
     private static void actionBar(MinecraftServer server, ServerPlayer player, String message) {
