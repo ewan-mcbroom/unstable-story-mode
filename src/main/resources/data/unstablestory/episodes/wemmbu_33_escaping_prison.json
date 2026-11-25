@@ -1,0 +1,301 @@
+{
+  "id": "wemmbu_33_escaping_prison",
+  "name": "Escaping Prison on the Unstable SMP",
+  "protagonist": "Wemmbu",
+  "video": "Escaping Prison on the Unstable SMP (Wemmbu, 29 Nov 2025)",
+  "status": "DRAFT: beats from an AI summary, dialogue is placeholder text. Check against the video.",
+  "steps": [
+    {
+      "type": "note",
+      "text": "Beat 1: the sentence"
+    },
+    {
+      "type": "title",
+      "title": "Escaping Prison",
+      "subtitle": "Wemmbu, episode 33"
+    },
+    {
+      "type": "player_kit",
+      "kit": "prisoner"
+    },
+    {
+      "type": "effect",
+      "effect": "minecraft:mining_fatigue",
+      "amplifier": 2
+    },
+    {
+      "type": "narrate",
+      "text": "LAW has locked Wemmbu in its prison for banning more than 1,000 players."
+    },
+    {
+      "type": "say",
+      "speaker": "LettuceK",
+      "color": "green",
+      "text": "[placeholder] When I am king, Wemmbu will be executed."
+    },
+    {
+      "type": "narrate",
+      "text": "If LettuceK wins the election, Wemmbu will be executed."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "note",
+      "text": "Beat 2: the prison and its rules. Guards walk their rounds and do not attack yet."
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "SargeLAW",
+          "skin": "SargeLAW",
+          "kit": "sargelaw_prison_break_bot",
+          "team": "law",
+          "x": 6,
+          "y": 0,
+          "z": 0,
+          "wander": 6,
+          "hostile": false
+        },
+        {
+          "name": "LAW_Guard1",
+          "kit": "law_soldier",
+          "team": "law",
+          "x": -6,
+          "y": 0,
+          "z": 4,
+          "wander": 6,
+          "hostile": false
+        },
+        {
+          "name": "LAW_Guard2",
+          "kit": "law_soldier",
+          "team": "law",
+          "x": 0,
+          "y": 0,
+          "z": -8,
+          "wander": 6,
+          "hostile": false
+        }
+      ]
+    },
+    {
+      "type": "narrate",
+      "text": "Elder guardians give Mining Fatigue. Guards listen to what prisoners say. Rooms have airlocks, and prisoners are searched after work."
+    },
+    {
+      "type": "note",
+      "text": "Beat 3: daily jobs. Not built yet: the job system."
+    },
+    {
+      "type": "objective",
+      "text": "Do today's prison job: mine with wooden tools, farm, chop trees or train. (/story next to skip)"
+    },
+    {
+      "type": "note",
+      "text": "Beat 4: the clue"
+    },
+    {
+      "type": "narrate",
+      "text": "Wemmbu remembers that Spoke once reached his solitary cell. There might be a way in, and a way out."
+    },
+    {
+      "type": "note",
+      "text": "Beat 5: talking in secret. Not built yet: guard hearing range."
+    },
+    {
+      "type": "objective",
+      "text": "Plan with the other prisoners during work or training, away from the guards. (/story next to skip)"
+    },
+    {
+      "type": "note",
+      "text": "Beat 6: gathering. Not built yet: inspections."
+    },
+    {
+      "type": "objective",
+      "text": "Note useful items and find the guards' ender chests. Don't take anything before an inspection. (/story next to skip)"
+    },
+    {
+      "type": "note",
+      "text": "Beat 7: the plan"
+    },
+    {
+      "type": "narrate",
+      "text": "The plan: wear down the Curse of Binding armour by taking damage, then drink invisibility and slip away."
+    },
+    {
+      "type": "note",
+      "text": "Beat 8: the first escape fails (scripted)"
+    },
+    {
+      "type": "objective",
+      "text": "Dig a tunnel out of the prison. (/story next to skip)"
+    },
+    {
+      "type": "effect",
+      "effect": "minecraft:invisibility",
+      "seconds": 30
+    },
+    {
+      "type": "narrate",
+      "text": "The armour isn't breaking fast enough, and the food is running out."
+    },
+    {
+      "type": "say",
+      "speaker": "LettuceK",
+      "color": "green",
+      "text": "[placeholder] Take them to solitary. Guard them day and night."
+    },
+    {
+      "type": "objective",
+      "text": "You are in solitary confinement. (/story next to continue)"
+    },
+    {
+      "type": "note",
+      "text": "Beat 9: Spoke's offer"
+    },
+    {
+      "type": "say",
+      "speaker": "SpokeIsHere",
+      "color": "aqua",
+      "text": "[placeholder] I can get you out. But then you work with me."
+    },
+    {
+      "type": "say",
+      "speaker": "Wemmbu",
+      "color": "gold",
+      "text": "[placeholder] Fine. Get me out."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "note",
+      "text": "Beat 10: the breakout. Check which kit Wemmbu really has here."
+    },
+    {
+      "type": "despawn_all"
+    },
+    {
+      "type": "player_kit",
+      "kit": "wemmbu_prison_break"
+    },
+    {
+      "type": "effect",
+      "effect": "minecraft:mining_fatigue",
+      "amplifier": 2
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "SpokeIsHere",
+          "skin": "SpokeIsHere",
+          "kit": "spokeishere_prison_break_bot",
+          "team": "prisoners",
+          "x": 2,
+          "y": 0,
+          "z": 2,
+          "hostile": false
+        },
+        {
+          "name": "SargeLAW",
+          "skin": "SargeLAW",
+          "kit": "sargelaw_prison_break_bot",
+          "team": "law",
+          "x": 10,
+          "y": 0,
+          "z": 0
+        },
+        {
+          "name": "LAW_Guard1",
+          "kit": "law_soldier",
+          "team": "law",
+          "x": 10,
+          "y": 0,
+          "z": 4
+        },
+        {
+          "name": "LAW_Guard2",
+          "kit": "law_soldier",
+          "team": "law",
+          "x": 10,
+          "y": 0,
+          "z": -4
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "text": "Fight your way through the prison"
+    },
+    {
+      "type": "note",
+      "text": "Beat 11: run from the geared group outside. Not built yet: the chase."
+    },
+    {
+      "type": "despawn_all"
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "LettuceK",
+          "skin": "LettuceK",
+          "kit": "lettucek_prison_break_bot",
+          "team": "law",
+          "x": 20,
+          "y": 0,
+          "z": 0,
+          "hostile": false
+        },
+        {
+          "name": "LAW_Elite1",
+          "kit": "law_soldier_hq",
+          "team": "law",
+          "x": 20,
+          "y": 0,
+          "z": 3,
+          "hostile": false
+        },
+        {
+          "name": "LAW_Elite2",
+          "kit": "law_soldier_hq",
+          "team": "law",
+          "x": 20,
+          "y": 0,
+          "z": -3,
+          "hostile": false
+        }
+      ]
+    },
+    {
+      "type": "narrate",
+      "text": "A heavily geared LAW group is waiting outside. With Mining Fatigue and this gear, Wemmbu can't win that fight."
+    },
+    {
+      "type": "objective",
+      "text": "Run. Get away from the prison. (/story next to skip)"
+    },
+    {
+      "type": "note",
+      "text": "Beat 12: ending"
+    },
+    {
+      "type": "despawn_all"
+    },
+    {
+      "type": "clear_effects"
+    },
+    {
+      "type": "narrate",
+      "text": "Wemmbu heads for the Farlands to get his strength back. To beat LAW he'll need his elytra mace and orbital strikes."
+    },
+    {
+      "type": "title",
+      "title": "To be continued",
+      "subtitle": "Next: I Got Hunted By the Minecraft LAW"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "campaign": "wemmbu",
+  "kits": {
+    "prisoner": {
+      "character": "Wemmbu",
+      "arc": "prison_break",
+      "role": "player",
+      "source_file": "prisoner.json",
+      "note": "Copper armour with Curse of Binding and Mending, nothing else"
+    },
+    "wemmbu_prison_break": {
+      "character": "Wemmbu",
+      "arc": "prison_break",
+      "role": "player",
+      "source_file": "PrisonbreakWemmbu.json",
+      "note": "Breakout kit: diamond armour, two maces, elytra"
+    },
+    "wemmbu_prison_break_midgame": {
+      "character": "Wemmbu",
+      "arc": "prison_break",
+      "role": "player",
+      "source_file": "PrisonBreakWemmbuMidGame.json",
+      "note": "Later in the escape: netherite"
+    },
+    "spokeishere_prison_break_bot": {
+      "character": "SpokeIsHere",
+      "arc": "prison_break",
+      "role": "ally",
+      "source_file": "PrisonbreakSpokeIsHereBot.json",
+      "note": "Frees the prisoners: fishing rod, trident, bow"
+    },
+    "sargelaw_prison_break_bot": {
+      "character": "SargeLAW",
+      "arc": "prison_break",
+      "role": "boss",
+      "source_file": "PrisonbreakSargeLAWbot.json",
+      "note": "Warden: bow, shield, 65 TNT minecarts"
+    },
+    "lettucek_prison_break_bot": {
+      "character": "LettuceK",
+      "arc": "prison_break",
+      "role": "enemy",
+      "source_file": "PrisonBreakLettuceKBot.json",
+      "note": "LAW leader during the escape"
+    },
+    "princezam_prison_break_bot": {
+      "character": "PrinceZam",
+      "arc": "prison_break",
+      "role": "enemy",
+      "source_file": "PrisonBreakPrinceZamBot.json",
+      "note": "Trident and wind charges"
+    },
+    "wemmbu_mafia": {
+      "character": "Wemmbu",
+      "arc": "invisible_mafia",
+      "role": "player",
+      "source_file": "WemmbuMesaMafia.json",
+      "note": "Mesa Mafia kit"
+    },
+    "invisknight_bot": {
+      "character": "Invisible Knight",
+      "arc": "invisible_mafia",
+      "role": "minion",
+      "source_file": "invisknightbot.json",
+      "note": "Mafia soldiers, trident offhand"
+    },
+    "flame_vs_wemmbu_mafia": {
+      "character": "FlameFrags",
+      "arc": "invisible_mafia",
+      "role": "enemy",
+      "source_file": "FlameVsWemmbuMafia_2.json",
+      "note": "Flame during the Mafia arc"
+    },
+    "ashswagg_mafia": {
+      "character": "Ashswagg",
+      "arc": "invisible_mafia",
+      "role": "boss",
+      "source_file": "Ashswag.json",
+      "note": "Mafia leader"
+    },
+    "wemmbu_zam_empire": {
+      "character": "Wemmbu",
+      "arc": "zam_empire",
+      "role": "player",
+      "source_file": "wemmbuzamempire.json",
+      "note": "Bow, cobwebs, 64 enchanted golden apples"
+    },
+    "zam_empire_soldier": {
+      "character": "Zam Empire soldier",
+      "arc": "zam_empire",
+      "role": "minion",
+      "source_file": "zamempire.json",
+      "note": "Empire army"
+    },
+    "princezam_empire": {
+      "character": "PrinceZam",
+      "arc": "zam_empire",
+      "role": "boss",
+      "source_file": "PrinceZam.json",
+      "note": "Six totems"
+    },
+    "wemmbu_mist": {
+      "character": "Wemmbu",
+      "arc": "the_mist",
+      "role": "player",
+      "source_file": "WemmbuMist.json",
+      "note": "Two maces, elytra"
+    },
+    "mist_soldier": {
+      "character": "Mist soldier",
+      "arc": "the_mist",
+      "role": "minion",
+      "source_file": "People_Mist_2.json",
+      "note": "Diamond, no totems"
+    },
+    "mistrul": {
+      "character": "Mistrul",
+      "arc": "the_mist",
+      "role": "boss",
+      "source_file": "mistrul.json",
+      "note": "112 pearls, 384 wind charges"
+    },
+    "wemmbu_null": {
+      "character": "Wemmbu",
+      "arc": "the_null",
+      "role": "player",
+      "source_file": "WemmbuNull2.json",
+      "note": "Mace, elytra, cobwebs"
+    },
+    "null_soldier": {
+      "character": "NULL soldier",
+      "arc": "the_null",
+      "role": "minion",
+      "source_file": "NullSolider_2.json",
+      "note": ""
+    },
+    "null_commander": {
+      "character": "NULL commander",
+      "arc": "the_null",
+      "role": "enemy",
+      "source_file": "NullCommander_2.json",
+      "note": "Mace and bow"
+    },
+    "the_null": {
+      "character": "The NULL",
+      "arc": "the_null",
+      "role": "boss",
+      "source_file": "Null_________.json",
+      "note": "Elytra, crossbow, fireworks offhand"
+    },
+    "wemmbu_2v1000": {
+      "character": "Wemmbu",
+      "arc": "two_vs_1000",
+      "role": "player",
+      "source_file": "Wemmbu_After2v1000.json",
+      "note": "No totems: survive on pearls and wind charges"
+    },
+    "law_soldier": {
+      "character": "LAW soldier",
+      "arc": "two_vs_1000",
+      "role": "minion",
+      "source_file": "Law20.json",
+      "note": "Weak diamond army kit, spawn in waves"
+    },
+    "law_soldier_hq": {
+      "character": "LAW elite",
+      "arc": "two_vs_1000",
+      "role": "enemy",
+      "source_file": "lawsoliderHQ.json",
+      "note": "Netherite HQ guard"
+    },
+    "lettucek_v1000": {
+      "character": "LettuceK",
+      "arc": "two_vs_1000",
+      "role": "boss",
+      "source_file": "LettuceKv1000.json",
+      "note": "LAW leader"
+    },
+    "wemmbu_rematch": {
+      "character": "Wemmbu",
+      "arc": "rematch_vs_flame",
+      "role": "player",
+      "source_file": "Wemmbu1stRematch_2.json",
+      "note": "Diamond, two maces, crossbow"
+    },
+    "flame_rematch": {
+      "character": "FlameFrags",
+      "arc": "rematch_vs_flame",
+      "role": "boss",
+      "source_file": "Flame1stRematch_2.json",
+      "note": "Cobwebs and shield"
+    }
+  }
+}

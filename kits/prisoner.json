@@ -1,0 +1,50 @@
+{
+  "36": {
+    "id": "minecraft:copper_boots",
+    "count": 1,
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:binding_curse": 1,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAFm1pbmVjcmFmdDpjb3BwZXJfYm9vdHMDAAVjb3VudAAAAAEKAApjb21wb25lbnRzCgAWbWluZWNyYWZ0OmVuY2hhbnRtZW50cwMAEW1pbmVjcmFmdDptZW5kaW5nAAAAAQMAFG1pbmVjcmFmdDp1bmJyZWFraW5nAAAAAwMAF21pbmVjcmFmdDpiaW5kaW5nX2N1cnNlAAAAAQAAAA=="
+  },
+  "37": {
+    "id": "minecraft:copper_leggings",
+    "count": 1,
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:binding_curse": 1,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAGW1pbmVjcmFmdDpjb3BwZXJfbGVnZ2luZ3MDAAVjb3VudAAAAAEKAApjb21wb25lbnRzCgAWbWluZWNyYWZ0OmVuY2hhbnRtZW50cwMAEW1pbmVjcmFmdDptZW5kaW5nAAAAAQMAFG1pbmVjcmFmdDp1bmJyZWFraW5nAAAAAwMAF21pbmVjcmFmdDpiaW5kaW5nX2N1cnNlAAAAAQAAAA=="
+  },
+  "38": {
+    "id": "minecraft:copper_chestplate",
+    "count": 1,
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:binding_curse": 1,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAG21pbmVjcmFmdDpjb3BwZXJfY2hlc3RwbGF0ZQMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABZtaW5lY3JhZnQ6ZW5jaGFudG1lbnRzAwARbWluZWNyYWZ0Om1lbmRpbmcAAAABAwAUbWluZWNyYWZ0OnVuYnJlYWtpbmcAAAADAwAXbWluZWNyYWZ0OmJpbmRpbmdfY3Vyc2UAAAABAAAA"
+  },
+  "39": {
+    "id": "minecraft:copper_helmet",
+    "count": 1,
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:binding_curse": 1,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpjb3BwZXJfaGVsbWV0AwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAFm1pbmVjcmFmdDplbmNoYW50bWVudHMDABFtaW5lY3JhZnQ6bWVuZGluZwAAAAEDABRtaW5lY3JhZnQ6dW5icmVha2luZwAAAAMDABdtaW5lY3JhZnQ6YmluZGluZ19jdXJzZQAAAAEAAAA="
+  }
+}

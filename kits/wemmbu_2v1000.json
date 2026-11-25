@@ -1,0 +1,356 @@
+{
+  "0": {
+    "id": "minecraft:netherite_sword",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 121,
+      "minecraft:repair_cost": 63,
+      "minecraft:enchantments": {
+        "minecraft:knockback": 1,
+        "minecraft:sharpness": 5,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:sweeping_edge": 3,
+        "minecraft:looting": 3,
+        "minecraft:fire_aspect": 2
+      }
+    }
+  },
+  "1": {
+    "id": "minecraft:netherite_axe",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 100,
+      "minecraft:repair_cost": 7,
+      "minecraft:enchantments": {
+        "minecraft:sharpness": 5,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:efficiency": 5
+      }
+    }
+  },
+  "2": {
+    "id": "minecraft:wind_charge",
+    "count": 64
+  },
+  "3": {
+    "id": "minecraft:ender_pearl",
+    "count": 16
+  },
+  "4": {
+    "id": "minecraft:golden_apple",
+    "count": 63
+  },
+  "5": {
+    "id": "minecraft:elytra",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 406,
+      "minecraft:repair_cost": 3,
+      "minecraft:enchantments": {
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3
+      }
+    }
+  },
+  "6": {
+    "id": "minecraft:firework_rocket",
+    "count": 64,
+    "components": {
+      "minecraft:fireworks": {
+        "flight_duration": 3
+      }
+    }
+  },
+  "7": {
+    "id": "minecraft:mace",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 460,
+      "minecraft:custom_name": "Gambit",
+      "minecraft:repair_cost": 15,
+      "minecraft:enchantments": {
+        "minecraft:wind_burst": 1,
+        "minecraft:mending": 1,
+        "minecraft:fire_aspect": 2,
+        "minecraft:unbreaking": 3,
+        "minecraft:density": 5
+      }
+    }
+  },
+  "8": {
+    "id": "minecraft:mace",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 150,
+      "minecraft:repair_cost": 15,
+      "minecraft:enchantments": {
+        "minecraft:breach": 4,
+        "minecraft:mending": 1,
+        "minecraft:fire_aspect": 2,
+        "minecraft:unbreaking": 3
+      },
+      "minecraft:custom_name": "Crucible"
+    }
+  },
+  "9": {
+    "id": "minecraft:diamond_helmet",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 1,
+      "minecraft:enchantments": {
+        "minecraft:protection": 4
+      }
+    }
+  },
+  "10": {
+    "id": "minecraft:diamond_chestplate",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 1,
+      "minecraft:enchantments": {
+        "minecraft:protection": 4
+      }
+    }
+  },
+  "12": {
+    "id": "minecraft:shield",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 100,
+      "minecraft:repair_cost": 3,
+      "minecraft:enchantments": {
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3
+      },
+      "minecraft:banner_patterns": [
+        {
+          "pattern": "minecraft:piglin",
+          "color": "black"
+        },
+        {
+          "pattern": "minecraft:half_horizontal",
+          "color": "purple"
+        }
+      ],
+      "minecraft:base_color": "purple"
+    }
+  },
+  "13": {
+    "id": "minecraft:water_bucket",
+    "count": 1
+  },
+  "14": {
+    "id": "minecraft:firework_rocket",
+    "count": 59,
+    "components": {
+      "minecraft:fireworks": {
+        "flight_duration": 3
+      }
+    }
+  },
+  "15": {
+    "id": "minecraft:ender_pearl",
+    "count": 16
+  },
+  "16": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:long_fire_resistance"
+      }
+    }
+  },
+  "17": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    }
+  },
+  "18": {
+    "id": "minecraft:diamond_leggings",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 1,
+      "minecraft:enchantments": {
+        "minecraft:protection": 4
+      }
+    }
+  },
+  "19": {
+    "id": "minecraft:diamond_boots",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 3,
+      "minecraft:enchantments": {
+        "minecraft:protection": 4,
+        "minecraft:feather_falling": 4
+      }
+    }
+  },
+  "22": {
+    "id": "minecraft:ender_chest",
+    "count": 3
+  },
+  "23": {
+    "id": "minecraft:wind_charge",
+    "count": 63
+  },
+  "24": {
+    "id": "minecraft:ender_pearl",
+    "count": 16
+  },
+  "25": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:long_fire_resistance"
+      }
+    }
+  },
+  "26": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    }
+  },
+  "27": {
+    "id": "minecraft:netherite_sword",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 120,
+      "minecraft:repair_cost": 63,
+      "minecraft:enchantments": {
+        "minecraft:knockback": 1,
+        "minecraft:sharpness": 5,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:sweeping_edge": 3,
+        "minecraft:looting": 3,
+        "minecraft:fire_aspect": 2
+      }
+    }
+  },
+  "28": {
+    "id": "minecraft:netherite_pickaxe",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 300,
+      "minecraft:repair_cost": 7,
+      "minecraft:enchantments": {
+        "minecraft:silk_touch": 1,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:efficiency": 5
+      }
+    }
+  },
+  "29": {
+    "id": "minecraft:golden_carrot",
+    "count": 64
+  },
+  "30": {
+    "id": "minecraft:golden_apple",
+    "count": 64
+  },
+  "31": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:long_fire_resistance"
+      }
+    }
+  },
+  "32": {
+    "id": "minecraft:water_bucket",
+    "count": 1
+  },
+  "33": {
+    "id": "minecraft:ender_pearl",
+    "count": 16
+  },
+  "35": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:long_swiftness"
+      }
+    }
+  },
+  "36": {
+    "id": "minecraft:netherite_boots",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 200,
+      "minecraft:repair_cost": 31,
+      "minecraft:enchantments": {
+        "minecraft:depth_strider": 3,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:protection": 4,
+        "minecraft:feather_falling": 4
+      }
+    }
+  },
+  "37": {
+    "id": "minecraft:netherite_leggings",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 374,
+      "minecraft:repair_cost": 15,
+      "minecraft:enchantments": {
+        "minecraft:swift_sneak": 3,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:protection": 4
+      }
+    }
+  },
+  "38": {
+    "id": "minecraft:netherite_chestplate",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 515,
+      "minecraft:repair_cost": 7,
+      "minecraft:enchantments": {
+        "minecraft:protection": 4,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3
+      },
+      "minecraft:trim": {
+        "material": "minecraft:netherite",
+        "pattern": "minecraft:dune"
+      }
+    }
+  },
+  "39": {
+    "id": "minecraft:netherite_helmet",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 300,
+      "minecraft:repair_cost": 15,
+      "minecraft:enchantments": {
+        "minecraft:respiration": 3,
+        "minecraft:aqua_affinity": 1,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:protection": 4
+      }
+    }
+  },
+  "40": {
+    "id": "minecraft:totem_of_undying",
+    "count": 1
+  }
+}
