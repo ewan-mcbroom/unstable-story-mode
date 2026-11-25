@@ -16,10 +16,12 @@ jobs:
         with:
           java-version: '25'
           distribution: 'microsoft'
+      - name: cache gradle downloads
+        uses: gradle/actions/setup-gradle@v6
       - name: make gradle wrapper executable
         run: chmod +x ./gradlew
       - name: build
-        run: ./gradlew build
+        run: ./gradlew build || (echo "Retrying once in 60s (downloads can be rate-limited)" && sleep 60 && ./gradlew build)
       - name: upload the mod jar
         uses: actions/upload-artifact@v7
         with:
