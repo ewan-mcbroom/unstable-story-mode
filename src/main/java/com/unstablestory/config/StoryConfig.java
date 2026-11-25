@@ -26,18 +26,19 @@ public final class StoryConfig {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     /** Raise this when the defaults change, so old command files get replaced. */
-    private static final int VERSION = 2;
+    private static final int VERSION = 3;
 
     public static final Map<String, String> DEFAULT_COMMANDS = new LinkedHashMap<>();
     static {
         DEFAULT_COMMANDS.put("_version", Integer.toString(VERSION));
-        // Spawn, move into place, then give the kit. Teams are left out until we know VexBot's team syntax.
+        // From the user's VexBot guide: "/vexbot spawn Steve 10 64 -20", then give the kit.
+        // Teams are left out until we know VexBot's team syntax.
         // Alternative to try: "vexbot team {team} spawn {name} {x} {y} {z} {kit}"
-        DEFAULT_COMMANDS.put("spawn_on_team", "vexbot spawn {name} ;; tp {name} {x} {y} {z} ;; vexbot randomkit {name} {kit}");
+        DEFAULT_COMMANDS.put("spawn_on_team", "vexbot spawn {name} {x} {y} {z} ;; vexbot givekit {name} {kit}");
         DEFAULT_COMMANDS.put("set_skin", "vexbot nick {name} {name} {skin}");
-        DEFAULT_COMMANDS.put("give_kit", "vexbot randomkit {target} {kit}");
+        DEFAULT_COMMANDS.put("give_kit", "vexbot givekit {target} {kit}");
         DEFAULT_COMMANDS.put("wander", "vexbot wander {name} {radius} {x} {y} {z}");
-        DEFAULT_COMMANDS.put("remove_bot", "kill {name}");
+        DEFAULT_COMMANDS.put("remove_bot", "vexbot kill {name}");
     }
 
     private static final Map<String, String> commands = new LinkedHashMap<>(DEFAULT_COMMANDS);
