@@ -17,8 +17,9 @@ final class StoryBot {
     final String requestedName;
     final String skin;
     final String kit;
-    final boolean hostile;
-    final boolean ally;
+    boolean hostile;
+    boolean ally;
+    final boolean follow;
     final int wander;
     final int x, y, z;
     final Set<UUID> playersBefore;
@@ -28,9 +29,10 @@ final class StoryBot {
     boolean alive = true;
     int ticksWaiting = 0;
 
-    StoryBot(String requestedName, String skin, String kit, boolean hostile, boolean ally, int wander, int x, int y, int z,
-             Set<UUID> playersBefore) {
+    StoryBot(String requestedName, String skin, String kit, boolean hostile, boolean ally, boolean follow, int wander,
+             int x, int y, int z, Set<UUID> playersBefore) {
         this.ally = ally;
+        this.follow = follow;
         this.requestedName = requestedName;
         this.skin = skin;
         this.kit = kit;
@@ -57,6 +59,10 @@ final class StoryBot {
             return false;
         }
         return normalize(candidate.getName().getString()).equals(normalize(requestedName));
+    }
+
+    boolean peaceful() {
+        return !hostile && !ally;
     }
 
     boolean isEntity(UUID id) {

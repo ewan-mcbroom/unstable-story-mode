@@ -122,6 +122,15 @@ public final class VexApi {
         }
     }
 
+    /** Make a bot follow a player around (VexBot's follow mode). */
+    public static void follow(String bot, String player) {
+        try {
+            call("vexbot.bot.BotManager", "setFollowTarget", new Class<?>[]{String.class, String.class}, bot, player);
+        } catch (ReflectiveOperationException | RuntimeException e) {
+            StoryMode.LOGGER.warn("VexBot could not make {} follow {}", bot, player, e);
+        }
+    }
+
     // ---- teams ----
 
     /**
@@ -132,6 +141,7 @@ public final class VexApi {
                             Collection<String> targets, Collection<String> targetTeams, Collection<String> friendlyPlayers) {
         String tm = "vexbot.team.TeamManager";
         try {
+            call(tm, "removeBotFromAllTeams", new Class<?>[]{String.class}, bot);
             call(tm, "getOrCreate", new Class<?>[]{String.class}, team);
             call(tm, "addBotsToTeam", new Class<?>[]{String.class, Collection.class}, team, List.of(bot));
             for (String p : friendlyPlayers) {

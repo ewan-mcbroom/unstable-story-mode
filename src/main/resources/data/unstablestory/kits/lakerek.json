@@ -1,0 +1,919 @@
+{
+  "0": {
+    "id": "minecraft:diamond_sword",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 3,
+      "minecraft:enchantments": {
+        "minecraft:vanishing_curse": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:fire_aspect": 2,
+        "minecraft:mending": 1,
+        "minecraft:looting": 3,
+        "minecraft:sweeping_edge": 3,
+        "minecraft:sharpness": 5
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpkaWFtb25kX3N3b3JkAwAFY291bnQAAAABCgAKY29tcG9uZW50cwMAFW1pbmVjcmFmdDpyZXBhaXJfY29zdAAAAAMKABZtaW5lY3JhZnQ6ZW5jaGFudG1lbnRzAwARbWluZWNyYWZ0Om1lbmRpbmcAAAABAwAZbWluZWNyYWZ0OnZhbmlzaGluZ19jdXJzZQAAAAEDABdtaW5lY3JhZnQ6c3dlZXBpbmdfZWRnZQAAAAMDABFtaW5lY3JhZnQ6bG9vdGluZwAAAAMDABNtaW5lY3JhZnQ6c2hhcnBuZXNzAAAABQMAFG1pbmVjcmFmdDp1bmJyZWFraW5nAAAAAwMAFW1pbmVjcmFmdDpmaXJlX2FzcGVjdAAAAAIAAAA="
+  },
+  "1": {
+    "id": "minecraft:bow",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 63,
+      "minecraft:enchantments": {
+        "minecraft:power": 5,
+        "minecraft:punch": 2,
+        "minecraft:vanishing_curse": 1,
+        "minecraft:flame": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:infinity": 1
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQADW1pbmVjcmFmdDpib3cDAAVjb3VudAAAAAEKAApjb21wb25lbnRzAwAVbWluZWNyYWZ0OnJlcGFpcl9jb3N0AAAAPwoAFm1pbmVjcmFmdDplbmNoYW50bWVudHMDAA9taW5lY3JhZnQ6cHVuY2gAAAACAwAZbWluZWNyYWZ0OnZhbmlzaGluZ19jdXJzZQAAAAEDABJtaW5lY3JhZnQ6aW5maW5pdHkAAAABAwAPbWluZWNyYWZ0OnBvd2VyAAAABQMAD21pbmVjcmFmdDpmbGFtZQAAAAEDABRtaW5lY3JhZnQ6dW5icmVha2luZwAAAAMAAAA="
+  },
+  "2": {
+    "id": "minecraft:diamond_axe",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 31,
+      "minecraft:enchantments": {
+        "minecraft:mending": 1,
+        "minecraft:vanishing_curse": 1,
+        "minecraft:silk_touch": 1,
+        "minecraft:efficiency": 5,
+        "minecraft:unbreaking": 3,
+        "minecraft:sharpness": 5
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDpkaWFtb25kX2F4ZQMABWNvdW50AAAAAQoACmNvbXBvbmVudHMDABVtaW5lY3JhZnQ6cmVwYWlyX2Nvc3QAAAAfCgAWbWluZWNyYWZ0OmVuY2hhbnRtZW50cwMAEW1pbmVjcmFmdDptZW5kaW5nAAAAAQMAGW1pbmVjcmFmdDp2YW5pc2hpbmdfY3Vyc2UAAAABAwAUbWluZWNyYWZ0OmVmZmljaWVuY3kAAAAFAwATbWluZWNyYWZ0OnNoYXJwbmVzcwAAAAUDABRtaW5lY3JhZnQ6c2lsa190b3VjaAAAAAEDABRtaW5lY3JhZnQ6dW5icmVha2luZwAAAAMAAAA="
+  },
+  "3": {
+    "id": "minecraft:cobweb",
+    "count": 64,
+    "vexbot:nbt": "CgAACAACaWQAEG1pbmVjcmFmdDpjb2J3ZWIDAAVjb3VudAAAAEAA"
+  },
+  "4": {
+    "id": "minecraft:oak_log",
+    "count": 64,
+    "vexbot:nbt": "CgAACAACaWQAEW1pbmVjcmFmdDpvYWtfbG9nAwAFY291bnQAAABAAA=="
+  },
+  "5": {
+    "id": "minecraft:ender_pearl",
+    "count": 16,
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDplbmRlcl9wZWFybAMABWNvdW50AAAAEAA="
+  },
+  "6": {
+    "id": "minecraft:golden_apple",
+    "count": 64,
+    "vexbot:nbt": "CgAACAACaWQAFm1pbmVjcmFmdDpnb2xkZW5fYXBwbGUDAAVjb3VudAAAAEAA"
+  },
+  "7": {
+    "id": "minecraft:enchanted_golden_apple",
+    "count": 5,
+    "vexbot:nbt": "CgAACAACaWQAIG1pbmVjcmFmdDplbmNoYW50ZWRfZ29sZGVuX2FwcGxlAwAFY291bnQAAAAFAA=="
+  },
+  "8": {
+    "id": "minecraft:elytra",
+    "count": 1,
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAEG1pbmVjcmFmdDplbHl0cmEDAAVjb3VudAAAAAEKAApjb21wb25lbnRzCgAWbWluZWNyYWZ0OmVuY2hhbnRtZW50cwMAEW1pbmVjcmFmdDptZW5kaW5nAAAAAQMAFG1pbmVjcmFmdDp1bmJyZWFraW5nAAAAAwAAAA=="
+  },
+  "9": {
+    "id": "minecraft:shield",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 7,
+      "minecraft:enchantments": {
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:vanishing_curse": 1
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAEG1pbmVjcmFmdDpzaGllbGQDAAVjb3VudAAAAAEKAApjb21wb25lbnRzAwAVbWluZWNyYWZ0OnJlcGFpcl9jb3N0AAAABwoAFm1pbmVjcmFmdDplbmNoYW50bWVudHMDABFtaW5lY3JhZnQ6bWVuZGluZwAAAAEDABltaW5lY3JhZnQ6dmFuaXNoaW5nX2N1cnNlAAAAAQMAFG1pbmVjcmFmdDp1bmJyZWFraW5nAAAAAwAAAA=="
+  },
+  "10": {
+    "id": "minecraft:totem_of_undying",
+    "count": 1,
+    "vexbot:nbt": "CgAACAACaWQAGm1pbmVjcmFmdDp0b3RlbV9vZl91bmR5aW5nAwAFY291bnQAAAABAA=="
+  },
+  "11": {
+    "id": "minecraft:totem_of_undying",
+    "count": 1,
+    "vexbot:nbt": "CgAACAACaWQAGm1pbmVjcmFmdDp0b3RlbV9vZl91bmR5aW5nAwAFY291bnQAAAABAA=="
+  },
+  "12": {
+    "id": "minecraft:fishing_rod",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "Stab shot",
+      "minecraft:damage": 60,
+      "minecraft:custom_data": {
+        "OrbitalMode": "stab"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDpmaXNoaW5nX3JvZAMABWNvdW50AAAAAQoACmNvbXBvbmVudHMIABVtaW5lY3JhZnQ6Y3VzdG9tX25hbWUACVN0YWIgc2hvdAoAFW1pbmVjcmFmdDpjdXN0b21fZGF0YQgAC09yYml0YWxNb2RlAARzdGFiAAMAEG1pbmVjcmFmdDpkYW1hZ2UAAAA8AAA="
+  },
+  "13": {
+    "id": "minecraft:fishing_rod",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "Stab shot",
+      "minecraft:damage": 60,
+      "minecraft:custom_data": {
+        "OrbitalMode": "stab"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDpmaXNoaW5nX3JvZAMABWNvdW50AAAAAQoACmNvbXBvbmVudHMIABVtaW5lY3JhZnQ6Y3VzdG9tX25hbWUACVN0YWIgc2hvdAoAFW1pbmVjcmFmdDpjdXN0b21fZGF0YQgAC09yYml0YWxNb2RlAARzdGFiAAMAEG1pbmVjcmFmdDpkYW1hZ2UAAAA8AAA="
+  },
+  "14": {
+    "id": "minecraft:fishing_rod",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "Stab shot",
+      "minecraft:damage": 60,
+      "minecraft:custom_data": {
+        "OrbitalMode": "stab"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDpmaXNoaW5nX3JvZAMABWNvdW50AAAAAQoACmNvbXBvbmVudHMIABVtaW5lY3JhZnQ6Y3VzdG9tX25hbWUACVN0YWIgc2hvdAoAFW1pbmVjcmFmdDpjdXN0b21fZGF0YQgAC09yYml0YWxNb2RlAARzdGFiAAMAEG1pbmVjcmFmdDpkYW1hZ2UAAAA8AAA="
+  },
+  "15": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAA="
+  },
+  "16": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAA="
+  },
+  "17": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAA="
+  },
+  "18": {
+    "id": "minecraft:shulker_box",
+    "count": 1,
+    "components": {
+      "minecraft:container": [
+        {
+          "slot": 0,
+          "item": {
+            "id": "minecraft:totem_of_undying",
+            "count": 1
+          }
+        },
+        {
+          "slot": 1,
+          "item": {
+            "id": "minecraft:experience_bottle",
+            "count": 64
+          }
+        },
+        {
+          "slot": 2,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_fire_resistance"
+              }
+            }
+          }
+        },
+        {
+          "slot": 3,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_swiftness"
+              }
+            }
+          }
+        },
+        {
+          "slot": 4,
+          "item": {
+            "id": "minecraft:ender_pearl",
+            "count": 16
+          }
+        },
+        {
+          "slot": 5,
+          "item": {
+            "id": "minecraft:golden_apple",
+            "count": 64
+          }
+        },
+        {
+          "slot": 6,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 7,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 8,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 9,
+          "item": {
+            "id": "minecraft:totem_of_undying",
+            "count": 1
+          }
+        },
+        {
+          "slot": 10,
+          "item": {
+            "id": "minecraft:experience_bottle",
+            "count": 64
+          }
+        },
+        {
+          "slot": 11,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_fire_resistance"
+              }
+            }
+          }
+        },
+        {
+          "slot": 12,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_swiftness"
+              }
+            }
+          }
+        },
+        {
+          "slot": 13,
+          "item": {
+            "id": "minecraft:ender_pearl",
+            "count": 16
+          }
+        },
+        {
+          "slot": 14,
+          "item": {
+            "id": "minecraft:golden_apple",
+            "count": 64
+          }
+        },
+        {
+          "slot": 15,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 16,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 17,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 18,
+          "item": {
+            "id": "minecraft:totem_of_undying",
+            "count": 1
+          }
+        },
+        {
+          "slot": 19,
+          "item": {
+            "id": "minecraft:ender_pearl",
+            "count": 16
+          }
+        },
+        {
+          "slot": 20,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_fire_resistance"
+              }
+            }
+          }
+        },
+        {
+          "slot": 21,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_swiftness"
+              }
+            }
+          }
+        },
+        {
+          "slot": 22,
+          "item": {
+            "id": "minecraft:ender_pearl",
+            "count": 16
+          }
+        },
+        {
+          "slot": 23,
+          "item": {
+            "id": "minecraft:cobweb",
+            "count": 64
+          }
+        },
+        {
+          "slot": 24,
+          "item": {
+            "id": "minecraft:totem_of_undying",
+            "count": 1
+          }
+        },
+        {
+          "slot": 25,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 26,
+          "item": {
+            "id": "minecraft:cobweb",
+            "count": 64
+          }
+        }
+      ],
+      "minecraft:custom_name": "Restock"
+    },
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDpzaHVsa2VyX2JveAMABWNvdW50AAAAAQoACmNvbXBvbmVudHMIABVtaW5lY3JhZnQ6Y3VzdG9tX25hbWUAB1Jlc3RvY2sJABNtaW5lY3JhZnQ6Y29udGFpbmVyCgAAABsDAARzbG90AAAAAAoABGl0ZW0IAAJpZAAabWluZWNyYWZ0OnRvdGVtX29mX3VuZHlpbmcDAAVjb3VudAAAAAEAAAMABHNsb3QAAAABCgAEaXRlbQgAAmlkABttaW5lY3JhZnQ6ZXhwZXJpZW5jZV9ib3R0bGUDAAVjb3VudAAAAEAAAAMABHNsb3QAAAACCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uAB5taW5lY3JhZnQ6bG9uZ19maXJlX3Jlc2lzdGFuY2UAAAAAAwAEc2xvdAAAAAMKAARpdGVtCAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGG1pbmVjcmFmdDpsb25nX3N3aWZ0bmVzcwAAAAADAARzbG90AAAABAoABGl0ZW0IAAJpZAAVbWluZWNyYWZ0OmVuZGVyX3BlYXJsAwAFY291bnQAAAAQAAADAARzbG90AAAABQoABGl0ZW0IAAJpZAAWbWluZWNyYWZ0OmdvbGRlbl9hcHBsZQMABWNvdW50AAAAQAAAAwAEc2xvdAAAAAYKAARpdGVtCAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAAAAwAEc2xvdAAAAAcKAARpdGVtCAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAAAAwAEc2xvdAAAAAgKAARpdGVtCAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAAAAwAEc2xvdAAAAAkKAARpdGVtCAACaWQAGm1pbmVjcmFmdDp0b3RlbV9vZl91bmR5aW5nAwAFY291bnQAAAABAAADAARzbG90AAAACgoABGl0ZW0IAAJpZAAbbWluZWNyYWZ0OmV4cGVyaWVuY2VfYm90dGxlAwAFY291bnQAAABAAAADAARzbG90AAAACwoABGl0ZW0IAAJpZAAXbWluZWNyYWZ0OnNwbGFzaF9wb3Rpb24DAAVjb3VudAAAAAEKAApjb21wb25lbnRzCgAZbWluZWNyYWZ0OnBvdGlvbl9jb250ZW50cwgABnBvdGlvbgAebWluZWNyYWZ0OmxvbmdfZmlyZV9yZXNpc3RhbmNlAAAAAAMABHNsb3QAAAAMCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uABhtaW5lY3JhZnQ6bG9uZ19zd2lmdG5lc3MAAAAAAwAEc2xvdAAAAA0KAARpdGVtCAACaWQAFW1pbmVjcmFmdDplbmRlcl9wZWFybAMABWNvdW50AAAAEAAAAwAEc2xvdAAAAA4KAARpdGVtCAACaWQAFm1pbmVjcmFmdDpnb2xkZW5fYXBwbGUDAAVjb3VudAAAAEAAAAMABHNsb3QAAAAPCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uABltaW5lY3JhZnQ6c3Ryb25nX3N0cmVuZ3RoAAAAAAMABHNsb3QAAAAQCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uABltaW5lY3JhZnQ6c3Ryb25nX3N0cmVuZ3RoAAAAAAMABHNsb3QAAAARCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uABltaW5lY3JhZnQ6c3Ryb25nX3N0cmVuZ3RoAAAAAAMABHNsb3QAAAASCgAEaXRlbQgAAmlkABptaW5lY3JhZnQ6dG90ZW1fb2ZfdW5keWluZwMABWNvdW50AAAAAQAAAwAEc2xvdAAAABMKAARpdGVtCAACaWQAFW1pbmVjcmFmdDplbmRlcl9wZWFybAMABWNvdW50AAAAEAAAAwAEc2xvdAAAABQKAARpdGVtCAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AHm1pbmVjcmFmdDpsb25nX2ZpcmVfcmVzaXN0YW5jZQAAAAADAARzbG90AAAAFQoABGl0ZW0IAAJpZAAXbWluZWNyYWZ0OnNwbGFzaF9wb3Rpb24DAAVjb3VudAAAAAEKAApjb21wb25lbnRzCgAZbWluZWNyYWZ0OnBvdGlvbl9jb250ZW50cwgABnBvdGlvbgAYbWluZWNyYWZ0Omxvbmdfc3dpZnRuZXNzAAAAAAMABHNsb3QAAAAWCgAEaXRlbQgAAmlkABVtaW5lY3JhZnQ6ZW5kZXJfcGVhcmwDAAVjb3VudAAAABAAAAMABHNsb3QAAAAXCgAEaXRlbQgAAmlkABBtaW5lY3JhZnQ6Y29id2ViAwAFY291bnQAAABAAAADAARzbG90AAAAGAoABGl0ZW0IAAJpZAAabWluZWNyYWZ0OnRvdGVtX29mX3VuZHlpbmcDAAVjb3VudAAAAAEAAAMABHNsb3QAAAAZCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uABltaW5lY3JhZnQ6c3Ryb25nX3N0cmVuZ3RoAAAAAAMABHNsb3QAAAAaCgAEaXRlbQgAAmlkABBtaW5lY3JhZnQ6Y29id2ViAwAFY291bnQAAABAAAAAAA=="
+  },
+  "19": {
+    "id": "minecraft:experience_bottle",
+    "count": 64,
+    "vexbot:nbt": "CgAACAACaWQAG21pbmVjcmFmdDpleHBlcmllbmNlX2JvdHRsZQMABWNvdW50AAAAQAA="
+  },
+  "20": {
+    "id": "minecraft:water_bucket",
+    "count": 1,
+    "vexbot:nbt": "CgAACAACaWQAFm1pbmVjcmFmdDp3YXRlcl9idWNrZXQDAAVjb3VudAAAAAEA"
+  },
+  "21": {
+    "id": "minecraft:ender_pearl",
+    "count": 16,
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDplbmRlcl9wZWFybAMABWNvdW50AAAAEAA="
+  },
+  "22": {
+    "id": "minecraft:fishing_rod",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "Stab shot",
+      "minecraft:damage": 60,
+      "minecraft:custom_data": {
+        "OrbitalMode": "stab"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDpmaXNoaW5nX3JvZAMABWNvdW50AAAAAQoACmNvbXBvbmVudHMIABVtaW5lY3JhZnQ6Y3VzdG9tX25hbWUACVN0YWIgc2hvdAoAFW1pbmVjcmFmdDpjdXN0b21fZGF0YQgAC09yYml0YWxNb2RlAARzdGFiAAMAEG1pbmVjcmFmdDpkYW1hZ2UAAAA8AAA="
+  },
+  "23": {
+    "id": "minecraft:fishing_rod",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "Stab shot",
+      "minecraft:damage": 60,
+      "minecraft:custom_data": {
+        "OrbitalMode": "stab"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDpmaXNoaW5nX3JvZAMABWNvdW50AAAAAQoACmNvbXBvbmVudHMIABVtaW5lY3JhZnQ6Y3VzdG9tX25hbWUACVN0YWIgc2hvdAoAFW1pbmVjcmFmdDpjdXN0b21fZGF0YQgAC09yYml0YWxNb2RlAARzdGFiAAMAEG1pbmVjcmFmdDpkYW1hZ2UAAAA8AAA="
+  },
+  "24": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAA="
+  },
+  "25": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAA="
+  },
+  "26": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAA="
+  },
+  "27": {
+    "id": "minecraft:shulker_box",
+    "count": 1,
+    "components": {
+      "minecraft:container": [
+        {
+          "slot": 0,
+          "item": {
+            "id": "minecraft:totem_of_undying",
+            "count": 1
+          }
+        },
+        {
+          "slot": 1,
+          "item": {
+            "id": "minecraft:experience_bottle",
+            "count": 64
+          }
+        },
+        {
+          "slot": 2,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_fire_resistance"
+              }
+            }
+          }
+        },
+        {
+          "slot": 3,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_swiftness"
+              }
+            }
+          }
+        },
+        {
+          "slot": 4,
+          "item": {
+            "id": "minecraft:ender_pearl",
+            "count": 16
+          }
+        },
+        {
+          "slot": 5,
+          "item": {
+            "id": "minecraft:golden_apple",
+            "count": 64
+          }
+        },
+        {
+          "slot": 6,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 7,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 8,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 9,
+          "item": {
+            "id": "minecraft:totem_of_undying",
+            "count": 1
+          }
+        },
+        {
+          "slot": 10,
+          "item": {
+            "id": "minecraft:experience_bottle",
+            "count": 64
+          }
+        },
+        {
+          "slot": 11,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_fire_resistance"
+              }
+            }
+          }
+        },
+        {
+          "slot": 12,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_swiftness"
+              }
+            }
+          }
+        },
+        {
+          "slot": 13,
+          "item": {
+            "id": "minecraft:ender_pearl",
+            "count": 16
+          }
+        },
+        {
+          "slot": 14,
+          "item": {
+            "id": "minecraft:golden_apple",
+            "count": 64
+          }
+        },
+        {
+          "slot": 15,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 16,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 17,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 18,
+          "item": {
+            "id": "minecraft:totem_of_undying",
+            "count": 1
+          }
+        },
+        {
+          "slot": 19,
+          "item": {
+            "id": "minecraft:ender_pearl",
+            "count": 16
+          }
+        },
+        {
+          "slot": 20,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_fire_resistance"
+              }
+            }
+          }
+        },
+        {
+          "slot": 21,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:long_swiftness"
+              }
+            }
+          }
+        },
+        {
+          "slot": 22,
+          "item": {
+            "id": "minecraft:ender_pearl",
+            "count": 16
+          }
+        },
+        {
+          "slot": 23,
+          "item": {
+            "id": "minecraft:cobweb",
+            "count": 64
+          }
+        },
+        {
+          "slot": 24,
+          "item": {
+            "id": "minecraft:totem_of_undying",
+            "count": 1
+          }
+        },
+        {
+          "slot": 25,
+          "item": {
+            "id": "minecraft:splash_potion",
+            "count": 1,
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "minecraft:strong_strength"
+              }
+            }
+          }
+        },
+        {
+          "slot": 26,
+          "item": {
+            "id": "minecraft:cobweb",
+            "count": 64
+          }
+        }
+      ],
+      "minecraft:custom_name": "Restock"
+    },
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDpzaHVsa2VyX2JveAMABWNvdW50AAAAAQoACmNvbXBvbmVudHMIABVtaW5lY3JhZnQ6Y3VzdG9tX25hbWUAB1Jlc3RvY2sJABNtaW5lY3JhZnQ6Y29udGFpbmVyCgAAABsDAARzbG90AAAAAAoABGl0ZW0IAAJpZAAabWluZWNyYWZ0OnRvdGVtX29mX3VuZHlpbmcDAAVjb3VudAAAAAEAAAMABHNsb3QAAAABCgAEaXRlbQgAAmlkABttaW5lY3JhZnQ6ZXhwZXJpZW5jZV9ib3R0bGUDAAVjb3VudAAAAEAAAAMABHNsb3QAAAACCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uAB5taW5lY3JhZnQ6bG9uZ19maXJlX3Jlc2lzdGFuY2UAAAAAAwAEc2xvdAAAAAMKAARpdGVtCAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGG1pbmVjcmFmdDpsb25nX3N3aWZ0bmVzcwAAAAADAARzbG90AAAABAoABGl0ZW0IAAJpZAAVbWluZWNyYWZ0OmVuZGVyX3BlYXJsAwAFY291bnQAAAAQAAADAARzbG90AAAABQoABGl0ZW0IAAJpZAAWbWluZWNyYWZ0OmdvbGRlbl9hcHBsZQMABWNvdW50AAAAQAAAAwAEc2xvdAAAAAYKAARpdGVtCAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAAAAwAEc2xvdAAAAAcKAARpdGVtCAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAAAAwAEc2xvdAAAAAgKAARpdGVtCAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAAAAwAEc2xvdAAAAAkKAARpdGVtCAACaWQAGm1pbmVjcmFmdDp0b3RlbV9vZl91bmR5aW5nAwAFY291bnQAAAABAAADAARzbG90AAAACgoABGl0ZW0IAAJpZAAbbWluZWNyYWZ0OmV4cGVyaWVuY2VfYm90dGxlAwAFY291bnQAAABAAAADAARzbG90AAAACwoABGl0ZW0IAAJpZAAXbWluZWNyYWZ0OnNwbGFzaF9wb3Rpb24DAAVjb3VudAAAAAEKAApjb21wb25lbnRzCgAZbWluZWNyYWZ0OnBvdGlvbl9jb250ZW50cwgABnBvdGlvbgAebWluZWNyYWZ0OmxvbmdfZmlyZV9yZXNpc3RhbmNlAAAAAAMABHNsb3QAAAAMCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uABhtaW5lY3JhZnQ6bG9uZ19zd2lmdG5lc3MAAAAAAwAEc2xvdAAAAA0KAARpdGVtCAACaWQAFW1pbmVjcmFmdDplbmRlcl9wZWFybAMABWNvdW50AAAAEAAAAwAEc2xvdAAAAA4KAARpdGVtCAACaWQAFm1pbmVjcmFmdDpnb2xkZW5fYXBwbGUDAAVjb3VudAAAAEAAAAMABHNsb3QAAAAPCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uABltaW5lY3JhZnQ6c3Ryb25nX3N0cmVuZ3RoAAAAAAMABHNsb3QAAAAQCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uABltaW5lY3JhZnQ6c3Ryb25nX3N0cmVuZ3RoAAAAAAMABHNsb3QAAAARCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uABltaW5lY3JhZnQ6c3Ryb25nX3N0cmVuZ3RoAAAAAAMABHNsb3QAAAASCgAEaXRlbQgAAmlkABptaW5lY3JhZnQ6dG90ZW1fb2ZfdW5keWluZwMABWNvdW50AAAAAQAAAwAEc2xvdAAAABMKAARpdGVtCAACaWQAFW1pbmVjcmFmdDplbmRlcl9wZWFybAMABWNvdW50AAAAEAAAAwAEc2xvdAAAABQKAARpdGVtCAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AHm1pbmVjcmFmdDpsb25nX2ZpcmVfcmVzaXN0YW5jZQAAAAADAARzbG90AAAAFQoABGl0ZW0IAAJpZAAXbWluZWNyYWZ0OnNwbGFzaF9wb3Rpb24DAAVjb3VudAAAAAEKAApjb21wb25lbnRzCgAZbWluZWNyYWZ0OnBvdGlvbl9jb250ZW50cwgABnBvdGlvbgAYbWluZWNyYWZ0Omxvbmdfc3dpZnRuZXNzAAAAAAMABHNsb3QAAAAWCgAEaXRlbQgAAmlkABVtaW5lY3JhZnQ6ZW5kZXJfcGVhcmwDAAVjb3VudAAAABAAAAMABHNsb3QAAAAXCgAEaXRlbQgAAmlkABBtaW5lY3JhZnQ6Y29id2ViAwAFY291bnQAAABAAAADAARzbG90AAAAGAoABGl0ZW0IAAJpZAAabWluZWNyYWZ0OnRvdGVtX29mX3VuZHlpbmcDAAVjb3VudAAAAAEAAAMABHNsb3QAAAAZCgAEaXRlbQgAAmlkABdtaW5lY3JhZnQ6c3BsYXNoX3BvdGlvbgMABWNvdW50AAAAAQoACmNvbXBvbmVudHMKABltaW5lY3JhZnQ6cG90aW9uX2NvbnRlbnRzCAAGcG90aW9uABltaW5lY3JhZnQ6c3Ryb25nX3N0cmVuZ3RoAAAAAAMABHNsb3QAAAAaCgAEaXRlbQgAAmlkABBtaW5lY3JhZnQ6Y29id2ViAwAFY291bnQAAABAAAAAAA=="
+  },
+  "28": {
+    "id": "minecraft:diamond_pickaxe",
+    "count": 1,
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:mending": 1,
+        "minecraft:vanishing_curse": 1,
+        "minecraft:silk_touch": 1,
+        "minecraft:efficiency": 5,
+        "minecraft:unbreaking": 3
+      },
+      "minecraft:repair_cost": 1
+    },
+    "vexbot:nbt": "CgAACAACaWQAGW1pbmVjcmFmdDpkaWFtb25kX3BpY2theGUDAAVjb3VudAAAAAEKAApjb21wb25lbnRzAwAVbWluZWNyYWZ0OnJlcGFpcl9jb3N0AAAAAQoAFm1pbmVjcmFmdDplbmNoYW50bWVudHMDABFtaW5lY3JhZnQ6bWVuZGluZwAAAAEDABltaW5lY3JhZnQ6dmFuaXNoaW5nX2N1cnNlAAAAAQMAFG1pbmVjcmFmdDplZmZpY2llbmN5AAAABQMAFG1pbmVjcmFmdDpzaWxrX3RvdWNoAAAAAQMAFG1pbmVjcmFmdDp1bmJyZWFraW5nAAAAAwAAAA=="
+  },
+  "29": {
+    "id": "minecraft:arrow",
+    "count": 64,
+    "vexbot:nbt": "CgAACAACaWQAD21pbmVjcmFmdDphcnJvdwMABWNvdW50AAAAQAA="
+  },
+  "30": {
+    "id": "minecraft:ender_pearl",
+    "count": 16,
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDplbmRlcl9wZWFybAMABWNvdW50AAAAEAA="
+  },
+  "31": {
+    "id": "minecraft:fishing_rod",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "Stab shot",
+      "minecraft:damage": 60,
+      "minecraft:custom_data": {
+        "OrbitalMode": "stab"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDpmaXNoaW5nX3JvZAMABWNvdW50AAAAAQoACmNvbXBvbmVudHMIABVtaW5lY3JhZnQ6Y3VzdG9tX25hbWUACVN0YWIgc2hvdAoAFW1pbmVjcmFmdDpjdXN0b21fZGF0YQgAC09yYml0YWxNb2RlAARzdGFiAAMAEG1pbmVjcmFmdDpkYW1hZ2UAAAA8AAA="
+  },
+  "32": {
+    "id": "minecraft:fishing_rod",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "Stab shot",
+      "minecraft:damage": 60,
+      "minecraft:custom_data": {
+        "OrbitalMode": "stab"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAFW1pbmVjcmFmdDpmaXNoaW5nX3JvZAMABWNvdW50AAAAAQoACmNvbXBvbmVudHMIABVtaW5lY3JhZnQ6Y3VzdG9tX25hbWUACVN0YWIgc2hvdAoAFW1pbmVjcmFmdDpjdXN0b21fZGF0YQgAC09yYml0YWxNb2RlAARzdGFiAAMAEG1pbmVjcmFmdDpkYW1hZ2UAAAA8AAA="
+  },
+  "33": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAA="
+  },
+  "34": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAA="
+  },
+  "35": {
+    "id": "minecraft:splash_potion",
+    "count": 1,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:strong_strength"
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpzcGxhc2hfcG90aW9uAwAFY291bnQAAAABCgAKY29tcG9uZW50cwoAGW1pbmVjcmFmdDpwb3Rpb25fY29udGVudHMIAAZwb3Rpb24AGW1pbmVjcmFmdDpzdHJvbmdfc3RyZW5ndGgAAAA="
+  },
+  "36": {
+    "id": "minecraft:diamond_boots",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 31,
+      "minecraft:enchantments": {
+        "minecraft:vanishing_curse": 1,
+        "minecraft:protection": 4,
+        "minecraft:unbreaking": 3,
+        "minecraft:feather_falling": 4,
+        "minecraft:soul_speed": 3,
+        "minecraft:mending": 1,
+        "minecraft:depth_strider": 3
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAF21pbmVjcmFmdDpkaWFtb25kX2Jvb3RzAwAFY291bnQAAAABCgAKY29tcG9uZW50cwMAFW1pbmVjcmFmdDpyZXBhaXJfY29zdAAAAB8KABZtaW5lY3JhZnQ6ZW5jaGFudG1lbnRzAwARbWluZWNyYWZ0Om1lbmRpbmcAAAABAwAZbWluZWNyYWZ0OnZhbmlzaGluZ19jdXJzZQAAAAEDABltaW5lY3JhZnQ6ZmVhdGhlcl9mYWxsaW5nAAAABAMAFG1pbmVjcmFmdDpwcm90ZWN0aW9uAAAABAMAF21pbmVjcmFmdDpkZXB0aF9zdHJpZGVyAAAAAwMAFG1pbmVjcmFmdDpzb3VsX3NwZWVkAAAAAwMAFG1pbmVjcmFmdDp1bmJyZWFraW5nAAAAAwAAAA=="
+  },
+  "37": {
+    "id": "minecraft:diamond_leggings",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 31,
+      "minecraft:enchantments": {
+        "minecraft:mending": 1,
+        "minecraft:swift_sneak": 3,
+        "minecraft:protection": 4,
+        "minecraft:vanishing_curse": 1,
+        "minecraft:unbreaking": 3
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAGm1pbmVjcmFmdDpkaWFtb25kX2xlZ2dpbmdzAwAFY291bnQAAAABCgAKY29tcG9uZW50cwMAFW1pbmVjcmFmdDpyZXBhaXJfY29zdAAAAB8KABZtaW5lY3JhZnQ6ZW5jaGFudG1lbnRzAwAVbWluZWNyYWZ0OnN3aWZ0X3NuZWFrAAAAAwMAGW1pbmVjcmFmdDp2YW5pc2hpbmdfY3Vyc2UAAAABAwAUbWluZWNyYWZ0OnByb3RlY3Rpb24AAAAEAwAUbWluZWNyYWZ0OnVuYnJlYWtpbmcAAAADAwARbWluZWNyYWZ0Om1lbmRpbmcAAAABAAAA"
+  },
+  "38": {
+    "id": "minecraft:diamond_chestplate",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 15,
+      "minecraft:enchantments": {
+        "minecraft:mending": 1,
+        "minecraft:protection": 4,
+        "minecraft:vanishing_curse": 1,
+        "minecraft:unbreaking": 3
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAHG1pbmVjcmFmdDpkaWFtb25kX2NoZXN0cGxhdGUDAAVjb3VudAAAAAEKAApjb21wb25lbnRzAwAVbWluZWNyYWZ0OnJlcGFpcl9jb3N0AAAADwoAFm1pbmVjcmFmdDplbmNoYW50bWVudHMDABFtaW5lY3JhZnQ6bWVuZGluZwAAAAEDABltaW5lY3JhZnQ6dmFuaXNoaW5nX2N1cnNlAAAAAQMAFG1pbmVjcmFmdDpwcm90ZWN0aW9uAAAABAMAFG1pbmVjcmFmdDp1bmJyZWFraW5nAAAAAwAAAA=="
+  },
+  "39": {
+    "id": "minecraft:diamond_helmet",
+    "count": 1,
+    "components": {
+      "minecraft:repair_cost": 31,
+      "minecraft:enchantments": {
+        "minecraft:mending": 1,
+        "minecraft:protection": 4,
+        "minecraft:vanishing_curse": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:aqua_affinity": 1,
+        "minecraft:respiration": 3
+      }
+    },
+    "vexbot:nbt": "CgAACAACaWQAGG1pbmVjcmFmdDpkaWFtb25kX2hlbG1ldAMABWNvdW50AAAAAQoACmNvbXBvbmVudHMDABVtaW5lY3JhZnQ6cmVwYWlyX2Nvc3QAAAAfCgAWbWluZWNyYWZ0OmVuY2hhbnRtZW50cwMAEW1pbmVjcmFmdDptZW5kaW5nAAAAAQMAGW1pbmVjcmFmdDp2YW5pc2hpbmdfY3Vyc2UAAAABAwAXbWluZWNyYWZ0OmFxdWFfYWZmaW5pdHkAAAABAwAUbWluZWNyYWZ0OnByb3RlY3Rpb24AAAAEAwAUbWluZWNyYWZ0OnVuYnJlYWtpbmcAAAADAwAVbWluZWNyYWZ0OnJlc3BpcmF0aW9uAAAAAwAAAA=="
+  },
+  "40": {
+    "id": "minecraft:totem_of_undying",
+    "count": 1,
+    "vexbot:nbt": "CgAACAACaWQAGm1pbmVjcmFmdDp0b3RlbV9vZl91bmR5aW5nAwAFY291bnQAAAABAA=="
+  }
+}

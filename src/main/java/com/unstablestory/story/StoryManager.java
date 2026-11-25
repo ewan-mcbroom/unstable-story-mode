@@ -41,10 +41,13 @@ public final class StoryManager {
         // the player, and they can't hurt the player either.
         ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> {
             StoryBot target = findBot(entity.getUUID());
-            if (target != null && !target.hostile) {
+            if (target != null && target.peaceful()) {
                 return false;
             }
             Entity attacker = source.getEntity();
+            if (target != null && target.ally && attacker instanceof ServerPlayer && findBot(attacker.getUUID()) == null) {
+                return false;
+            }
             if (attacker != null && entity instanceof ServerPlayer) {
                 StoryBot bot = findBot(attacker.getUUID());
                 if (bot != null && !bot.hostile) {

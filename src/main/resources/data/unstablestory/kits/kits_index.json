@@ -176,6 +176,76 @@
       "source_file": "LettuceKv1000.json",
       "note": "LAW leader"
     },
+    "wemmbu_farlands": {
+      "character": "Wemmbu",
+      "arc": "farlands_avengers",
+      "role": "player",
+      "source_file": "wemmbufarlands.json",
+      "note": "Far Lands kit: mace, elytra, 250 wind charges"
+    },
+    "eggchan_farlands": {
+      "character": "Eggchan",
+      "arc": "farlands_avengers",
+      "role": "ally",
+      "source_file": "eggchann.json",
+      "note": "Diamond, bow, elytra"
+    },
+    "flamefrags_avengers": {
+      "character": "FlameFrags",
+      "arc": "farlands_avengers",
+      "role": "enemy",
+      "source_file": "flamefragsnormal.json",
+      "note": "Turns on the Avengers in the final fight"
+    },
+    "jaden_man_farlands": {
+      "character": "Jaden_MAN",
+      "arc": "farlands_avengers",
+      "role": "boss",
+      "source_file": "jadenmanfarlands.json",
+      "note": "Leader of the Avengers"
+    },
+    "wyll_farlands": {
+      "character": "WyLL",
+      "arc": "farlands_avengers",
+      "role": "enemy",
+      "source_file": "wyllfarlands.json",
+      "note": "Five totems, 64 enchanted golden apples"
+    },
+    "fantst_farlands": {
+      "character": "Fantst",
+      "arc": "farlands_avengers",
+      "role": "enemy",
+      "source_file": "fantstfarlands.json",
+      "note": ""
+    },
+    "baablu_farlands": {
+      "character": "Baablu",
+      "arc": "farlands_avengers",
+      "role": "enemy",
+      "source_file": "bablufarlandsw.json",
+      "note": ""
+    },
+    "spongs_willsion_farlands": {
+      "character": "Spongs / Willsion",
+      "arc": "farlands_avengers",
+      "role": "minion",
+      "source_file": "spongsandwillsion.json",
+      "note": "Weaker diamond gear"
+    },
+    "lakerek": {
+      "character": "Lakerek",
+      "arc": "farlands_avengers",
+      "role": "enemy",
+      "source_file": "Lakerek.json",
+      "note": "Leader of the First Generation Players"
+    },
+    "sharpness_farlands": {
+      "character": "Sharpness",
+      "arc": "farlands_avengers",
+      "role": "enemy",
+      "source_file": "sharpnesfarlnads.json",
+      "note": "Has Wemmbu's mace"
+    },
     "wemmbu_rematch": {
       "character": "Wemmbu",
       "arc": "rematch_vs_flame",

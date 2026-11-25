@@ -10,6 +10,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.levelgen.Heightmap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +25,11 @@ import java.util.UUID;
  * episode started, until real story locations exist.
  */
 public final class EpisodeSession {
-    private enum Waiting { NONE, TICKS, FIGHT, OBJECTIVE }
+    private enum Waiting { NONE, TICKS, FIGHT, OBJECTIVE, ESCAPE }
 
     private final UUID playerId;
     private final Episode episode;
-    private final BlockPos anchor;
+    private BlockPos anchor;
     private final InventoryBackup backup;
     private final List<StoryBot> bots = new ArrayList<>();
 
@@ -36,7 +38,12 @@ public final class EpisodeSession {
     private Waiting waiting = Waiting.NONE;
     private int waitTicks = 0;
     private String objective = "";
+    private int fightUntilRemaining = 0;
+    private long fightDeadline = -1;
+    private double escapeDistance = 0;
+    private long escapeDeadline = -1;
     private boolean finished = false;
+    private MinecraftServer server;
 
     EpisodeSession(ServerPlayer player, Episode episode) {
         this.playerId = player.getUUID();
@@ -51,8 +58,9 @@ public final class EpisodeSession {
 
     /** The story bot that is this entity, if this session spawned it. */
     StoryBot findBot(UUID entity) {
+        // Only living bots: VexBot reuses the real account's UUID when a name is spawned again.
         for (StoryBot b : bots) {
-            if (b.isEntity(entity)) {
+            if (b.alive && b.isEntity(entity)) {
                 return b;
             }
         }
@@ -60,12 +68,45 @@ public final class EpisodeSession {
     }
 
     private boolean hostileBotsAlive() {
+        return hostileBotsAliveCount() > fightUntilRemaining;
+    }
+
+    private int hostileBotsAliveCount() {
+        int n = 0;
         for (StoryBot b : bots) {
             if (b.hostile && b.alive) {
-                return true;
+                n++;
             }
         }
-        return false;
+        return n;
+    }
+
+    private StoryBot bot(String requestedName) {
+        // The newest living bot with that name.
+        for (int i = bots.size() - 1; i >= 0; i--) {
+            StoryBot b = bots.get(i);
+            if (b.alive && (b.requestedName.equalsIgnoreCase(requestedName) || b.name().equalsIgnoreCase(requestedName))) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    /** True once every enemy is far enough away (or time is up). */
+    private boolean escaped(MinecraftServer server, ServerPlayer player) {
+        if (escapeDeadline >= 0 && server.getTickCount() >= escapeDeadline) {
+            return true;
+        }
+        for (StoryBot b : bots) {
+            if (!b.hostile || !b.alive || !b.found()) {
+                continue;
+            }
+            ServerPlayer e = server.getPlayerList().getPlayer(b.uuid);
+            if (e != null && e.distanceTo(player) < escapeDistance) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /** Match bots that have just appeared to the player entities VexBot made for them. */
@@ -99,6 +140,9 @@ public final class EpisodeSession {
                 VexApi.hunt(b.name(), me);
             } else if (b.ally) {
                 VexApi.team("story_allies", b.name(), "SPECIFIC_TEAMS", false, List.of(), List.of("story_enemies"), List.of(me));
+                if (b.follow) {
+                    VexApi.follow(b.name(), me);
+                }
             } else {
                 VexApi.team("story_peaceful", b.name(), "NONE", false, List.of(), List.of(), List.of());
             }
@@ -117,6 +161,7 @@ public final class EpisodeSession {
 
     /** Called every server tick. Runs steps until one has to wait. */
     void tick(MinecraftServer server) {
+        this.server = server;
         ServerPlayer player = server.getPlayerList().getPlayer(playerId);
         if (player == null || finished) {
             return;
@@ -125,9 +170,18 @@ public final class EpisodeSession {
         if (waiting == Waiting.TICKS && --waitTicks > 0) {
             return;
         }
-        if (waiting == Waiting.FIGHT && hostileBotsAlive()) {
+        if (waiting == Waiting.FIGHT && hostileBotsAlive()
+                && (fightDeadline < 0 || server.getTickCount() < fightDeadline)) {
             return;
         }
+        if (waiting == Waiting.ESCAPE && !escaped(server, player)) {
+            if (server.getTickCount() % 40 == 0) {
+                actionBar(server, player, objective);
+            }
+            return;
+        }
+        fightUntilRemaining = 0;
+        fightDeadline = -1;
         if (waiting == Waiting.OBJECTIVE) {
             if (server.getTickCount() % 40 == 0) {
                 actionBar(server, player, objective);
@@ -199,8 +253,52 @@ public final class EpisodeSession {
                     objective = str(s, "text", "");
                     actionBar(server, player, objective);
                 }
+                // Optional: stop when only this many enemies are left, or after this many seconds.
+                fightUntilRemaining = int_(s, "until_remaining", 0);
+                fightDeadline = s.has("max_seconds") ? server.getTickCount() + 20L * int_(s, "max_seconds", 0) : -1;
                 if (hostileBotsAlive()) {
                     waiting = Waiting.FIGHT;
+                }
+            }
+            case "escape" -> {
+                objective = str(s, "text", "Get away!");
+                player.sendSystemMessage(Component.literal("Objective: " + objective).withStyle(ChatFormatting.YELLOW));
+                escapeDistance = int_(s, "distance", 48);
+                escapeDeadline = s.has("seconds") ? server.getTickCount() + 20L * int_(s, "seconds", 0) : -1;
+                waiting = Waiting.ESCAPE;
+            }
+            case "player_command" -> VexBridge.runRaw(server, "execute as " + name + " at " + name + " run "
+                    + str(s, "command", "").replace("{player}", name));
+            case "set_anchor" -> {
+                anchor = player.blockPosition();
+                VexBridge.debug(server, "Story anchor moved to " + anchor.toShortString());
+            }
+            case "switch_side" -> {
+                StoryBot b = bot(str(s, "bot", ""));
+                if (b != null) {
+                    String side = str(s, "to", "ally");
+                    b.hostile = side.equals("enemy");
+                    b.ally = side.equals("ally");
+                    if (b.found()) {
+                        setUpBot(server, player, b);
+                    }
+                }
+            }
+            case "despawn" -> {
+                for (JsonElement e : s.getAsJsonArray("bots")) {
+                    StoryBot b = bot(e.getAsString());
+                    if (b != null) {
+                        VexBridge.remove(server, b.name());
+                        b.alive = false;
+                    }
+                }
+            }
+            case "despawn_enemies" -> {
+                for (StoryBot b : bots) {
+                    if (b.hostile && b.alive) {
+                        VexBridge.remove(server, b.name());
+                        b.alive = false;
+                    }
                 }
             }
             case "despawn_all" -> removeAllBots(server);
@@ -225,7 +323,7 @@ public final class EpisodeSession {
         boolean ally = b.has("ally") && b.get("ally").getAsBoolean();
         boolean hostile = !ally && (!b.has("hostile") || b.get("hostile").getAsBoolean());
         StoryBot bot = new StoryBot(str(b, "name", "Bot"), b.has("skin") ? str(b, "skin", "") : null,
-                str(b, "kit", ""), hostile, ally, int_(b, "wander", 0), p.getX(), p.getY(), p.getZ(),
+                str(b, "kit", ""), hostile, ally, b.has("follow") && b.get("follow").getAsBoolean(), int_(b, "wander", 0), p.getX(), p.getY(), p.getZ(),
                 StoryBot.currentPlayers(server));
         bots.add(bot);
         VexBridge.spawnOnTeam(server, str(b, "team", "story"), bot.requestedName, bot.kit, p.getX(), p.getY(), p.getZ());
@@ -297,8 +395,27 @@ public final class EpisodeSession {
         }
     }
 
+    /** A position from the episode file, as an offset from the anchor. Without "y" it is the ground there. */
     private BlockPos pos(JsonObject s) {
-        return anchor.offset(int_(s, "x", 0), int_(s, "y", 0), int_(s, "z", 0));
+        int x = anchor.getX() + int_(s, "x", 0);
+        int z = anchor.getZ() + int_(s, "z", 0);
+        if (s.has("y")) {
+            return new BlockPos(x, anchor.getY() + int_(s, "y", 0), z);
+        }
+        return new BlockPos(x, surfaceY(x, z), z);
+    }
+
+    private int surfaceY(int x, int z) {
+        if (server == null) {
+            return anchor.getY();
+        }
+        ServerPlayer player = server.getPlayerList().getPlayer(playerId);
+        if (player == null) {
+            return anchor.getY();
+        }
+        Level level = player.level();
+        int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
+        return y > level.getMinY() ? y : anchor.getY();
     }
 
     private static void actionBar(MinecraftServer server, ServerPlayer player, String message) {
