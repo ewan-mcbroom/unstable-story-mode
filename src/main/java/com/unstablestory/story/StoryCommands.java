@@ -112,7 +112,6 @@ public final class StoryCommands {
         var p = player.blockPosition();
         VexBridge.spawnOnTeam(ctx.getSource().getServer(), "story", "StoryTestBot", "sargelaw_prison_break_bot",
                 p.getX() + 3, p.getY(), p.getZ());
-        VexBridge.giveKit(ctx.getSource().getServer(), "StoryTestBot", "sargelaw_prison_break_bot");
         ctx.getSource().sendSuccess(() -> Component.literal(
                 "Tried to spawn StoryTestBot 3 blocks away in SargeLAW's prison kit. Turn on /story debug on first to see any errors."), false);
         return 1;

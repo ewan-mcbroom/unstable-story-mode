@@ -37,6 +37,8 @@ VexBot's commands aren't documented, so the mod writes them to `config/unstables
 
 Copy an episode file from `src/main/resources/data/unstablestory/episodes/` into `config/unstablestory/episodes/`, edit it, and run `/story reload`. Your copy replaces the built-in one.
 
+Bots in a `spawn` step can be `"hostile": false` (peaceful, never fights) or `"ally": true` (fights on your side).
+
 Step types: `title`, `say`, `narrate`, `wait`, `teleport`, `effect`, `clear_effects`, `player_kit`, `spawn`, `fight`, `despawn_all`, `objective`, `checkpoint`, `command`, `note`.
 
 ## Kits

@@ -30,6 +30,14 @@ public final class VexBridge {
     public static boolean debugging(UUID player) { return player.equals(debugPlayer); }
 
     public static void spawnOnTeam(MinecraftServer server, String team, String name, String kit, int x, int y, int z) {
+        if (VexApi.available()) {
+            if (!kit.isEmpty() && !VexApi.kitExists(server, kit)) {
+                debug(server, "VexBot has no kit called " + kit + " (is it in vexbot_kits?)");
+            }
+            boolean ok = VexApi.spawn(server, name, kit, x, y, z);
+            debug(server, "VexBot API: spawn " + name + " at " + x + " " + y + " " + z + " with kit " + kit + (ok ? "" : " FAILED (see log)"));
+            return;
+        }
         run(server, "spawn_on_team", Map.of(
                 "team", team, "name", name, "kit", kit,
                 "x", Integer.toString(x), "y", Integer.toString(y), "z", Integer.toString(z)));
@@ -40,6 +48,12 @@ public final class VexBridge {
     }
 
     public static void giveKit(MinecraftServer server, String target, String kit) {
+        ServerPlayer player = server.getPlayerList().getPlayerByName(target);
+        if (VexApi.available() && player != null) {
+            boolean ok = VexApi.giveKit(server, player, kit);
+            debug(server, "VexBot API: give kit " + kit + " to " + target + (ok ? "" : " FAILED (does the kit exist?)"));
+            return;
+        }
         run(server, "give_kit", Map.of("target", target, "kit", kit));
     }
 
@@ -49,6 +63,13 @@ public final class VexBridge {
     }
 
     public static void remove(MinecraftServer server, String name) {
+        if (VexApi.available()) {
+            boolean ok = VexApi.despawn(server, name);
+            debug(server, "VexBot API: remove " + name + (ok ? "" : " (not found)"));
+            if (ok) {
+                return;
+            }
+        }
         run(server, "remove_bot", Map.of("name", name));
     }
 
@@ -65,6 +86,15 @@ public final class VexBridge {
             if (!command.isBlank()) {
                 runRaw(server, command.strip());
             }
+        }
+    }
+
+    /** A line for the debugging player, if debug is on. */
+    public static void debug(MinecraftServer server, String message) {
+        StoryMode.LOGGER.info("[story] {}", message);
+        ServerPlayer watcher = debugPlayer == null ? null : server.getPlayerList().getPlayer(debugPlayer);
+        if (watcher != null) {
+            watcher.sendSystemMessage(Component.literal("[debug] " + message).withStyle(ChatFormatting.DARK_GRAY));
         }
     }
 

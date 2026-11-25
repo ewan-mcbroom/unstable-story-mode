@@ -3,6 +3,7 @@ package com.unstablestory.story;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.unstablestory.StoryMode;
+import com.unstablestory.vex.VexApi;
 import com.unstablestory.vex.VexBridge;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -77,7 +78,7 @@ public final class EpisodeSession {
                 if (b.matches(candidate) && !StoryManager.isTrackedBot(candidate.getUUID())) {
                     b.uuid = candidate.getUUID();
                     b.actualName = candidate.getName().getString();
-                    setUpBot(server, b);
+                    setUpBot(server, player, b);
                     break;
                 }
             }
@@ -89,8 +90,21 @@ public final class EpisodeSession {
         }
     }
 
-    private void setUpBot(MinecraftServer server, StoryBot b) {
-        if (!b.kit.isEmpty()) {
+    private void setUpBot(MinecraftServer server, ServerPlayer player, StoryBot b) {
+        String me = player.getName().getString();
+        if (VexApi.available()) {
+            // The kit was handed over at spawn. Now set who the bot fights.
+            if (b.hostile) {
+                VexApi.team("story_enemies", b.name(), "SPECIFIC", true, List.of(me), List.of(), List.of());
+                VexApi.hunt(b.name(), me);
+            } else if (b.ally) {
+                VexApi.team("story_allies", b.name(), "SPECIFIC_TEAMS", false, List.of(), List.of("story_enemies"), List.of(me));
+            } else {
+                VexApi.team("story_peaceful", b.name(), "NONE", false, List.of(), List.of(), List.of());
+            }
+            VexBridge.debug(server, b.requestedName + " appeared as " + b.name()
+                    + (b.hostile ? " (enemy)" : b.ally ? " (ally)" : " (peaceful)"));
+        } else if (!b.kit.isEmpty()) {
             VexBridge.giveKit(server, b.name(), b.kit);
         }
         if (b.skin != null) {
@@ -208,9 +222,10 @@ public final class EpisodeSession {
 
     private void spawnBot(MinecraftServer server, JsonObject b) {
         BlockPos p = pos(b);
-        boolean hostile = !b.has("hostile") || b.get("hostile").getAsBoolean();
+        boolean ally = b.has("ally") && b.get("ally").getAsBoolean();
+        boolean hostile = !ally && (!b.has("hostile") || b.get("hostile").getAsBoolean());
         StoryBot bot = new StoryBot(str(b, "name", "Bot"), b.has("skin") ? str(b, "skin", "") : null,
-                str(b, "kit", ""), hostile, int_(b, "wander", 0), p.getX(), p.getY(), p.getZ(),
+                str(b, "kit", ""), hostile, ally, int_(b, "wander", 0), p.getX(), p.getY(), p.getZ(),
                 StoryBot.currentPlayers(server));
         bots.add(bot);
         VexBridge.spawnOnTeam(server, str(b, "team", "story"), bot.requestedName, bot.kit, p.getX(), p.getY(), p.getZ());

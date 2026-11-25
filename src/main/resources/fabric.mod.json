@@ -4,17 +4,27 @@
   "version": "${version}",
   "name": "Unstable SMP Story Mode",
   "description": "Unofficial fan mod: play through the Unstable SMP videos as story episodes, with VexBot NPCs in the characters' real kits.",
-  "authors": ["ewan-mcbroom"],
+  "authors": [
+    "ewan-mcbroom"
+  ],
   "license": "All-Rights-Reserved",
   "icon": "assets/unstablestory/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": ["com.unstablestory.StoryMode"]
+    "main": [
+      "com.unstablestory.StoryMode"
+    ]
   },
   "depends": {
     "fabricloader": ">=0.20.1",
     "minecraft": "~1.21.11",
     "java": ">=21",
     "fabric-api": "*"
+  },
+  "recommends": {
+    "vexbot": ">=3.2.0"
+  },
+  "suggests": {
+    "unstablegeneration": ">=1.0.7"
   }
 }

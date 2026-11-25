@@ -18,6 +18,7 @@ final class StoryBot {
     final String skin;
     final String kit;
     final boolean hostile;
+    final boolean ally;
     final int wander;
     final int x, y, z;
     final Set<UUID> playersBefore;
@@ -27,8 +28,9 @@ final class StoryBot {
     boolean alive = true;
     int ticksWaiting = 0;
 
-    StoryBot(String requestedName, String skin, String kit, boolean hostile, int wander, int x, int y, int z,
+    StoryBot(String requestedName, String skin, String kit, boolean hostile, boolean ally, int wander, int x, int y, int z,
              Set<UUID> playersBefore) {
+        this.ally = ally;
         this.requestedName = requestedName;
         this.skin = skin;
         this.kit = kit;
