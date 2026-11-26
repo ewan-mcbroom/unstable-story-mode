@@ -297,7 +297,8 @@
       "type": "despawn",
       "bots": [
         "Lakerek"
-      ]
+      ],
+      "killed": true
     },
     {
       "type": "narrate",
@@ -325,7 +326,8 @@
       "type": "despawn",
       "bots": [
         "mxsterwu"
-      ]
+      ],
+      "killed": true
     },
     {
       "type": "narrate",

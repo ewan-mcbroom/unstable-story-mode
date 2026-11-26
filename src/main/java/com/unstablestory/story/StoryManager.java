@@ -71,6 +71,7 @@ public final class StoryManager {
             StoryBot bot = session.findBot(entity.getUUID());
             if (bot != null) {
                 session.onBotDied(bot);
+                session.deathSound(entity.level().getServer());
             }
         }
     }

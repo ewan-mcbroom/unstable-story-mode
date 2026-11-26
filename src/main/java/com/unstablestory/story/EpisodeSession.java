@@ -368,6 +368,10 @@ public final class EpisodeSession {
                 }
             }
             case "despawn" -> {
+                // "killed": true means they die in the story (plays the death sound).
+                if (s.has("killed") && s.get("killed").getAsBoolean()) {
+                    deathSound(server);
+                }
                 for (JsonElement e : s.getAsJsonArray("bots")) {
                     StoryBot b = bot(e.getAsString());
                     if (b != null) {
@@ -433,6 +437,15 @@ public final class EpisodeSession {
         bot.alive = false;
     }
 
+    /** The Unstable SMP death sound (the Wither spawn sound), heard by the player wherever they are. */
+    void deathSound(MinecraftServer server) {
+        ServerPlayer player = server.getPlayerList().getPlayer(playerId);
+        if (player != null) {
+            VexBridge.runRawQuiet(server, "playsound minecraft:entity.wither.spawn master " + player.getName().getString()
+                    + " " + player.getX() + " " + player.getY() + " " + player.getZ() + " 1 1 1");
+        }
+    }
+
     /** The player hit one of this session's bots. */
     void onPlayerHitBot(MinecraftServer server, ServerPlayer player, StoryBot bot) {
         if (waiting == Waiting.HIT && (bot.requestedName.equalsIgnoreCase(hitTarget) || bot.name().equalsIgnoreCase(hitTarget))) {
@@ -471,6 +484,7 @@ public final class EpisodeSession {
     /** The player would have died: undo it and go back to the last checkpoint. */
     void onPlayerDefeated(MinecraftServer server, ServerPlayer player) {
         barrageUntil = -1;
+        deathSound(server);
         player.setHealth(player.getMaxHealth());
         player.getFoodData().setFoodLevel(20);
         VexBridge.runRaw(server, "effect clear " + player.getName().getString());
