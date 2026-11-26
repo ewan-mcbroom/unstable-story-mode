@@ -3,6 +3,7 @@ package com.unstablestory.vex;
 import com.unstablestory.StoryMode;
 import com.unstablestory.config.StoryConfig;
 import net.minecraft.ChatFormatting;
+import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
@@ -98,19 +99,37 @@ public final class VexBridge {
         }
     }
 
-    /** Runs any command. Quietly as the server, or out loud as the debugging player. */
+    /**
+     * Runs any command as the server, so it works whatever the player's permissions
+     * are (even with cheats off). With debug on, the command and anything it prints,
+     * including errors, are copied to the debugging player's chat.
+     */
     public static void runRaw(MinecraftServer server, String command) {
         if (command.startsWith("/")) {
             command = command.substring(1);
         }
         StoryMode.LOGGER.info("[story] /{}", command);
         ServerPlayer watcher = debugPlayer == null ? null : server.getPlayerList().getPlayer(debugPlayer);
-        CommandSourceStack source;
+        CommandSourceStack source = server.createCommandSourceStack();
         if (watcher != null) {
             watcher.sendSystemMessage(Component.literal("[debug] /" + command).withStyle(ChatFormatting.DARK_GRAY));
-            source = watcher.createCommandSourceStack();
+            source = source.withSource(new CommandSource() {
+                @Override
+                public void sendSystemMessage(Component message) {
+                    watcher.sendSystemMessage(Component.literal("[debug]   ").withStyle(ChatFormatting.DARK_GRAY).append(message));
+                }
+
+                @Override
+                public boolean acceptsSuccess() { return true; }
+
+                @Override
+                public boolean acceptsFailure() { return true; }
+
+                @Override
+                public boolean shouldInformAdmins() { return false; }
+            });
         } else {
-            source = server.createCommandSourceStack().withSuppressedOutput();
+            source = source.withSuppressedOutput();
         }
         server.getCommands().performPrefixedCommand(source, command);
     }
