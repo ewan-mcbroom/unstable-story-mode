@@ -22,6 +22,7 @@ Every push builds the mod automatically. Open the **Actions** tab, click the new
 | --- | --- |
 | `/story list` | Show the episodes |
 | `/story start wemmbu_33_escaping_prison` | Start an episode. Your items are saved and come back at the end |
+| `/story status` | Where you are in the episode and what to do now |
 | `/story next` | Skip the current objective (for parts not built yet) |
 | `/story retry` | Back to the last checkpoint |
 | `/story stop` | Leave the episode |
@@ -39,7 +40,7 @@ Copy an episode file from `src/main/resources/data/unstablestory/episodes/` into
 
 Bots in a `spawn` step can be `"hostile": false` (peaceful, never fights) or `"ally": true` (fights on your side).
 
-Step types: `title`, `say`, `narrate`, `wait`, `teleport`, `effect`, `clear_effects`, `player_kit`, `spawn`, `fight`, `despawn_all`, `objective`, `checkpoint`, `command`, `note`.
+Step types: `part` (starts a new part: `number`, `title`), `title`, `say`, `narrate`, `wait`, `teleport`, `effect`, `clear_effects`, `player_kit`, `spawn`, `fight`, `despawn_all`, `objective`, `checkpoint`, `command`, `note`.
 
 ## Kits
 

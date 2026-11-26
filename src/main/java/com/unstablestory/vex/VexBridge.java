@@ -99,6 +99,11 @@ public final class VexBridge {
         }
     }
 
+    /** Runs a command as the server with no output and no debug echo (for frequent updates). */
+    public static void runRawQuiet(MinecraftServer server, String command) {
+        server.getCommands().performPrefixedCommand(server.createCommandSourceStack().withSuppressedOutput(), command);
+    }
+
     /**
      * Runs any command as the server, so it works whatever the player's permissions
      * are (even with cheats off). With debug on, the command and anything it prints,

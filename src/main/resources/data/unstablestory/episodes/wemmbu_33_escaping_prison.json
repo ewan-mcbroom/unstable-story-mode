@@ -10,9 +10,9 @@
       "text": "Beat 1: the sentence"
     },
     {
-      "type": "title",
-      "title": "Escaping Prison",
-      "subtitle": "Wemmbu, episode 33"
+      "type": "part",
+      "number": 1,
+      "title": "Locked Up"
     },
     {
       "type": "player_kit",
@@ -89,6 +89,11 @@
       "text": "Beat 3: daily jobs. Not built yet: the job system."
     },
     {
+      "type": "part",
+      "number": 2,
+      "title": "Planning the Escape"
+    },
+    {
       "type": "objective",
       "text": "Do today's prison job: mine with wooden tools, farm, chop trees or train. (/story next to skip)"
     },
@@ -127,6 +132,11 @@
     {
       "type": "note",
       "text": "Beat 8: the first escape fails (scripted)"
+    },
+    {
+      "type": "part",
+      "number": 3,
+      "title": "The First Attempt"
     },
     {
       "type": "objective",
@@ -173,6 +183,11 @@
     {
       "type": "note",
       "text": "Beat 10: the breakout. Check which kit Wemmbu really has here."
+    },
+    {
+      "type": "part",
+      "number": 4,
+      "title": "The Breakout"
     },
     {
       "type": "despawn_all"

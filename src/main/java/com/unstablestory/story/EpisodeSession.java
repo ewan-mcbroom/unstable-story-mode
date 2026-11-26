@@ -38,6 +38,9 @@ public final class EpisodeSession {
     private Waiting waiting = Waiting.NONE;
     private int waitTicks = 0;
     private String objective = "";
+    private String partTitle = "";
+    private int partNumber = 0;
+    private boolean hudShown = false;
     private int fightUntilRemaining = 0;
     private long fightDeadline = -1;
     private double escapeDistance = 0;
@@ -168,6 +171,9 @@ public final class EpisodeSession {
             return;
         }
         findNewBots(server, player);
+        if (!hudShown || server.getTickCount() % 20 == 0) {
+            updateHud(server, player);
+        }
         if (waiting == Waiting.TICKS && --waitTicks > 0) {
             return;
         }
@@ -176,18 +182,15 @@ public final class EpisodeSession {
             return;
         }
         if (waiting == Waiting.ESCAPE && !escaped(server, player)) {
-            if (server.getTickCount() % 40 == 0) {
-                actionBar(server, player, objective);
-            }
             return;
         }
         fightUntilRemaining = 0;
         fightDeadline = -1;
         if (waiting == Waiting.OBJECTIVE) {
-            if (server.getTickCount() % 40 == 0) {
-                actionBar(server, player, objective);
-            }
             return;
+        }
+        if (waiting == Waiting.FIGHT || waiting == Waiting.ESCAPE) {
+            objectiveDone(server, player);
         }
         waiting = Waiting.NONE;
         int guard = 0;
@@ -221,16 +224,31 @@ public final class EpisodeSession {
             }
             case "say" -> {
                 ChatFormatting color = ChatFormatting.getByName(str(s, "color", "white"));
-                Component line = Component.literal("<").append(Component.literal(str(s, "speaker", "?"))
-                                .withStyle(color == null ? ChatFormatting.WHITE : color))
-                        .append(Component.literal("> " + str(s, "text", "")));
+                Component line = Component.literal(str(s, "speaker", "?"))
+                                .withStyle(color == null ? ChatFormatting.WHITE : color, ChatFormatting.BOLD)
+                        .append(Component.literal(": " + str(s, "text", "")).withStyle(ChatFormatting.WHITE));
                 player.sendSystemMessage(line);
-                waitFor(int_(s, "ticks", 50));
+                waitFor(int_(s, "ticks", 70));
             }
             case "narrate" -> {
-                player.sendSystemMessage(Component.literal(str(s, "text", ""))
+                player.sendSystemMessage(Component.literal("  " + str(s, "text", ""))
                         .withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
-                waitFor(int_(s, "ticks", 60));
+                waitFor(int_(s, "ticks", 80));
+            }
+            case "part" -> {
+                // A new part of the episode: big title, a header in chat, the bar at the top updates.
+                partNumber = int_(s, "number", partNumber + 1);
+                partTitle = str(s, "title", "");
+                objective = "";
+                String heading = "Part " + partNumber + " of " + parts() + ": " + partTitle;
+                player.sendSystemMessage(Component.literal(""));
+                player.sendSystemMessage(Component.literal("== " + heading + " ==").withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
+                VexBridge.runRaw(server, "title " + name + " times 10 50 20");
+                VexBridge.runRaw(server, "title " + name + " subtitle " + text(partTitle, "yellow"));
+                VexBridge.runRaw(server, "title " + name + " title " + text("Part " + partNumber, "gold"));
+                VexBridge.runRaw(server, "playsound minecraft:ui.toast.challenge_complete master " + name);
+                updateHud(server, player);
+                waitFor(int_(s, "ticks", 70));
             }
             case "wait" -> waitFor(int_(s, "ticks", 20));
             case "teleport" -> {
@@ -251,8 +269,7 @@ public final class EpisodeSession {
             }
             case "fight" -> {
                 if (s.has("text")) {
-                    objective = str(s, "text", "");
-                    actionBar(server, player, objective);
+                    newObjective(server, player, str(s, "text", ""));
                 }
                 // Optional: stop when only this many enemies are left, or after this many seconds.
                 fightUntilRemaining = int_(s, "until_remaining", 0);
@@ -262,8 +279,7 @@ public final class EpisodeSession {
                 }
             }
             case "escape" -> {
-                objective = str(s, "text", "Get away!");
-                player.sendSystemMessage(Component.literal("Objective: " + objective).withStyle(ChatFormatting.YELLOW));
+                newObjective(server, player, str(s, "text", "Get away!"));
                 escapeDistance = int_(s, "distance", 48);
                 escapeDeadline = s.has("seconds") ? server.getTickCount() + 20L * int_(s, "seconds", 0) : -1;
                 waiting = Waiting.ESCAPE;
@@ -356,9 +372,7 @@ public final class EpisodeSession {
             }
             case "despawn_all" -> removeAllBots(server);
             case "objective" -> {
-                objective = str(s, "text", "");
-                player.sendSystemMessage(Component.literal("Objective: " + objective).withStyle(ChatFormatting.YELLOW));
-                actionBar(server, player, objective);
+                newObjective(server, player, str(s, "text", ""));
                 waiting = Waiting.OBJECTIVE;
             }
             case "checkpoint" -> {
@@ -397,6 +411,12 @@ public final class EpisodeSession {
             return false;
         }
         waiting = Waiting.NONE;
+        if (server != null) {
+            ServerPlayer player = server.getPlayerList().getPlayer(playerId);
+            if (player != null) {
+                objectiveDone(server, player);
+            }
+        }
         return true;
     }
 
@@ -425,6 +445,7 @@ public final class EpisodeSession {
         }
         finished = true;
         removeAllBots(server);
+        VexBridge.runRaw(server, "bossbar remove " + barId());
         if (player != null) {
             VexBridge.runRaw(server, "effect clear " + player.getName().getString());
             backup.restore(player);
@@ -474,6 +495,76 @@ public final class EpisodeSession {
         }
         ServerPlayer player = server.getPlayerList().getPlayer(playerId);
         return player == null ? null : player.level();
+    }
+
+    // ---- the on-screen guide: a bar at the top that always says where you are and what to do ----
+
+    private int parts() {
+        int n = 0;
+        for (JsonObject st : episode.steps()) {
+            if ("part".equals(str(st, "type", ""))) {
+                n++;
+            }
+        }
+        return Math.max(n, 1);
+    }
+
+    private String barId() {
+        return "unstablestory:story_" + playerId.toString().substring(0, 8);
+    }
+
+    private void newObjective(MinecraftServer server, ServerPlayer player, String text) {
+        objective = text;
+        player.sendSystemMessage(Component.literal("> ").withStyle(ChatFormatting.YELLOW, ChatFormatting.BOLD)
+                .append(Component.literal(text).withStyle(ChatFormatting.YELLOW)));
+        VexBridge.runRaw(server, "playsound minecraft:block.note_block.pling master " + player.getName().getString());
+        updateHud(server, player);
+    }
+
+    private void objectiveDone(MinecraftServer server, ServerPlayer player) {
+        if (!objective.isEmpty()) {
+            player.sendSystemMessage(Component.literal("Done: " + objective).withStyle(ChatFormatting.GREEN));
+            VexBridge.runRaw(server, "playsound minecraft:entity.player.levelup master " + player.getName().getString());
+        }
+        objective = "";
+        updateHud(server, player);
+    }
+
+    /** /story status: where you are and what to do. */
+    Component status() {
+        String where = partTitle.isEmpty() ? episode.name() : "Part " + partNumber + " of " + parts() + ": " + partTitle;
+        String what = objective.isEmpty() ? "Watch the story; the next objective will show up here." : objective;
+        return Component.literal(episode.name()).withStyle(ChatFormatting.GOLD)
+                .append(Component.literal("\n" + where).withStyle(ChatFormatting.YELLOW))
+                .append(Component.literal("\nNow: " + what).withStyle(ChatFormatting.WHITE));
+    }
+
+    private void updateHud(MinecraftServer server, ServerPlayer player) {
+        String id = barId();
+        String name = player.getName().getString();
+        if (!hudShown) {
+            VexBridge.runRaw(server, "bossbar remove " + id);
+            VexBridge.runRaw(server, "bossbar add " + id + " " + text(episode.name(), "gold"));
+            VexBridge.runRaw(server, "bossbar set " + id + " color yellow");
+            VexBridge.runRaw(server, "bossbar set " + id + " max " + Math.max(1, episode.steps().size()));
+            VexBridge.runRaw(server, "bossbar set " + id + " players " + name);
+            hudShown = true;
+        }
+        StringBuilder line = new StringBuilder();
+        line.append(partTitle.isEmpty() ? episode.name() : "Part " + partNumber + "/" + parts() + ": " + partTitle);
+        if (!objective.isEmpty()) {
+            line.append("  |  ").append(objective);
+            if (waiting == Waiting.FIGHT) {
+                line.append(" (").append(hostileBotsAliveCount()).append(" left)");
+            } else if (waiting == Waiting.ESCAPE && escapeDeadline >= 0) {
+                long secs = Math.max(0, (escapeDeadline - server.getTickCount()) / 20);
+                line.append(" (").append(secs).append("s)");
+            } else if (waiting == Waiting.OBJECTIVE) {
+                line.append("  (/story next to skip)");
+            }
+        }
+        VexBridge.runRawQuiet(server, "bossbar set " + id + " name " + text(line.toString(), objective.isEmpty() ? "gold" : "yellow"));
+        VexBridge.runRawQuiet(server, "bossbar set " + id + " value " + Math.min(step, episode.steps().size()));
     }
 
     private static void actionBar(MinecraftServer server, ServerPlayer player, String message) {

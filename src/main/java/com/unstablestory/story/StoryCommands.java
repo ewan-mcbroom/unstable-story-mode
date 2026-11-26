@@ -16,6 +16,7 @@ import net.minecraft.server.level.ServerPlayer;
 /**
  * /story list               show the episodes
  * /story start <episode>    start an episode (your items are saved and given back after)
+ * /story status             where you are in the episode and what to do now
  * /story next               finish the current objective (for beats not built yet)
  * /story retry              go back to the last checkpoint
  * /story stop               leave the episode
@@ -34,6 +35,15 @@ public final class StoryCommands {
                         .then(Commands.argument("episode", StringArgumentType.word())
                                 .suggests((ctx, builder) -> SharedSuggestionProvider.suggest(Episode.all().keySet(), builder))
                                 .executes(StoryCommands::start)))
+                .then(Commands.literal("status").executes(ctx -> {
+                    EpisodeSession session = StoryManager.get(ctx.getSource().getPlayerOrException());
+                    if (session == null) {
+                        ctx.getSource().sendFailure(Component.literal("You are not in an episode. Try /story list."));
+                        return 0;
+                    }
+                    ctx.getSource().sendSuccess(session::status, false);
+                    return 1;
+                }))
                 .then(Commands.literal("next").executes(StoryCommands::next))
                 .then(Commands.literal("retry").executes(StoryCommands::retry))
                 .then(Commands.literal("stop").executes(StoryCommands::stop))
