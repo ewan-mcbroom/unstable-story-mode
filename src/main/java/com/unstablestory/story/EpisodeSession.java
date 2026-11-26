@@ -24,7 +24,7 @@ import java.util.UUID;
  * episode started, until real story locations exist.
  */
 public final class EpisodeSession {
-    private enum Waiting { NONE, TICKS, FIGHT, OBJECTIVE, ESCAPE }
+    private enum Waiting { NONE, TICKS, FIGHT, OBJECTIVE, ESCAPE, HIT }
 
     private final UUID playerId;
     private final Episode episode;
@@ -41,6 +41,10 @@ public final class EpisodeSession {
     private String partTitle = "";
     private int partNumber = 0;
     private boolean hudShown = false;
+    private String hitTarget = "";
+    private long barrageUntil = -1;
+    private int barrageEvery = 60;
+    private int barrageCount = 2;
     private int fightUntilRemaining = 0;
     private long fightDeadline = -1;
     private double escapeDistance = 0;
@@ -173,6 +177,16 @@ public final class EpisodeSession {
         findNewBots(server, player);
         if (!hudShown || server.getTickCount() % 20 == 0) {
             updateHud(server, player);
+        }
+        if (barrageUntil >= 0) {
+            if (server.getTickCount() >= barrageUntil) {
+                barrageUntil = -1;
+            } else if (server.getTickCount() % barrageEvery == 0) {
+                orbitalStrike(server, player);
+            }
+        }
+        if (waiting == Waiting.HIT) {
+            return;
         }
         if (waiting == Waiting.TICKS && --waitTicks > 0) {
             return;
@@ -362,6 +376,20 @@ public final class EpisodeSession {
                     }
                 }
             }
+            case "hit" -> {
+                // Wait until the player hits this character (it won't take damage if it's peaceful).
+                hitTarget = str(s, "bot", "");
+                newObjective(server, player, str(s, "text", "Hit " + hitTarget));
+                waiting = Waiting.HIT;
+            }
+            case "barrage" -> {
+                // Orbital strikes: TNT falls around the player for a while.
+                barrageUntil = server.getTickCount() + 20L * int_(s, "seconds", 30);
+                barrageEvery = Math.max(10, int_(s, "every_ticks", 60));
+                barrageCount = Math.max(1, int_(s, "count", 2));
+                player.sendSystemMessage(Component.literal("Orbital strikes incoming!").withStyle(ChatFormatting.RED, ChatFormatting.BOLD));
+            }
+            case "barrage_stop" -> barrageUntil = -1;
             case "despawn_enemies" -> {
                 for (StoryBot b : bots) {
                     if (b.hostile && b.alive) {
@@ -405,9 +433,29 @@ public final class EpisodeSession {
         bot.alive = false;
     }
 
+    /** The player hit one of this session's bots. */
+    void onPlayerHitBot(MinecraftServer server, ServerPlayer player, StoryBot bot) {
+        if (waiting == Waiting.HIT && (bot.requestedName.equalsIgnoreCase(hitTarget) || bot.name().equalsIgnoreCase(hitTarget))) {
+            waiting = Waiting.NONE;
+            objectiveDone(server, player);
+        }
+    }
+
+    private void orbitalStrike(MinecraftServer server, ServerPlayer player) {
+        java.util.Random random = new java.util.Random();
+        for (int i = 0; i < barrageCount; i++) {
+            double x = player.getX() + random.nextInt(11) - 5;
+            double z = player.getZ() + random.nextInt(11) - 5;
+            double y = player.getY() + 18;
+            VexBridge.runRawQuiet(server, "summon minecraft:tnt " + x + " " + y + " " + z + " {fuse:45}");
+        }
+        VexBridge.runRawQuiet(server, "playsound minecraft:entity.firework_rocket.launch master "
+                + player.getName().getString() + " ~ ~ ~ 1 0.6");
+    }
+
     /** "/story next": finishes the current objective. Used for beats not built yet. */
     boolean completeObjective() {
-        if (waiting != Waiting.OBJECTIVE) {
+        if (waiting != Waiting.OBJECTIVE && waiting != Waiting.HIT) {
             return false;
         }
         waiting = Waiting.NONE;
@@ -422,6 +470,7 @@ public final class EpisodeSession {
 
     /** The player would have died: undo it and go back to the last checkpoint. */
     void onPlayerDefeated(MinecraftServer server, ServerPlayer player) {
+        barrageUntil = -1;
         player.setHealth(player.getMaxHealth());
         player.getFoodData().setFoodLevel(20);
         VexBridge.runRaw(server, "effect clear " + player.getName().getString());
@@ -444,6 +493,7 @@ public final class EpisodeSession {
             return;
         }
         finished = true;
+        barrageUntil = -1;
         removeAllBots(server);
         VexBridge.runRaw(server, "bossbar remove " + barId());
         if (player != null) {
@@ -559,7 +609,7 @@ public final class EpisodeSession {
             } else if (waiting == Waiting.ESCAPE && escapeDeadline >= 0) {
                 long secs = Math.max(0, (escapeDeadline - server.getTickCount()) / 20);
                 line.append(" (").append(secs).append("s)");
-            } else if (waiting == Waiting.OBJECTIVE) {
+            } else if (waiting == Waiting.OBJECTIVE || waiting == Waiting.HIT) {
                 line.append("  (/story next to skip)");
             }
         }

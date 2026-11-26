@@ -143,11 +143,210 @@
     },
     {
       "type": "note",
-      "text": "Part 3: the second attack. Lakerek's castle happens before this; not playable yet."
+      "text": "Part 3: Lakerek's castle (I Explored Beyond the Minecraft Fartherlands). Wiki: Nitenly's warning sign; two players inside, Wemmbu punches them to check they're real and robs them; one hands over Protection I boots; Lakerek fights with Forge items and orbital strike cannons, gives up when he can't fire them, and lets Wemmbu kill him; mxsterwu says they shouldn't have, and Wemmbu kills him too."
     },
     {
       "type": "part",
       "number": 3,
+      "title": "Lakerek's Castle"
+    },
+    {
+      "type": "narrate",
+      "text": "Wemmbu and Egg push on, looking for better gear."
+    },
+    {
+      "type": "narrate",
+      "text": "A sign blocks the way: 'turn back, last warning', signed Nitenly. Wemmbu ignores it."
+    },
+    {
+      "type": "despawn",
+      "bots": [
+        "eggchan"
+      ]
+    },
+    {
+      "type": "find_arena",
+      "into_farlands": 96,
+      "search": 48,
+      "size": 16,
+      "max_step": 4
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "eggchan",
+          "kit": "eggchan_farlands",
+          "ally": true,
+          "follow": true,
+          "x": 0,
+          "z": 2
+        }
+      ]
+    },
+    {
+      "type": "narrate",
+      "text": "They find a strange build. Inside are two players."
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "mxsterwu",
+          "kit": "",
+          "hostile": false,
+          "x": 5,
+          "z": -1
+        },
+        {
+          "name": "Burgle5",
+          "kit": "",
+          "hostile": false,
+          "x": 5,
+          "z": 2
+        }
+      ]
+    },
+    {
+      "type": "hit",
+      "bot": "mxsterwu",
+      "text": "Punch mxsterwu to check they're real players, not ghosts"
+    },
+    {
+      "type": "say",
+      "speaker": "Wemmbu",
+      "color": "gold",
+      "text": "[placeholder] Real players. Hand over your food."
+    },
+    {
+      "type": "command",
+      "command": "give {player} minecraft:cooked_beef 16"
+    },
+    {
+      "type": "narrate",
+      "text": "Wemmbu takes their food. He asks for XP; instead one of them hands over his boots. They only have Protection I."
+    },
+    {
+      "type": "note",
+      "text": "Check in the video which boots these are."
+    },
+    {
+      "type": "command",
+      "command": "give {player} minecraft:diamond_boots[enchantments={protection:1}]"
+    },
+    {
+      "type": "say",
+      "speaker": "mxsterwu",
+      "color": "aqua",
+      "text": "[placeholder] Lak's weapons all came from the Forge."
+    },
+    {
+      "type": "narrate",
+      "text": "Lakerek, leader of the First Generation Players, wakes up."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "spawn",
+      "bots": [
+        {
+          "name": "Lakerek",
+          "kit": "lakerek",
+          "x": 14,
+          "z": 0
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "speaker": "Lakerek",
+      "color": "dark_red",
+      "text": "[placeholder] You shouldn't have come here."
+    },
+    {
+      "type": "barrage",
+      "seconds": 45,
+      "every_ticks": 50,
+      "count": 2
+    },
+    {
+      "type": "fight",
+      "text": "Survive Lakerek and his orbital strikes",
+      "max_seconds": 45
+    },
+    {
+      "type": "barrage_stop"
+    },
+    {
+      "type": "switch_side",
+      "bot": "Lakerek",
+      "to": "peaceful"
+    },
+    {
+      "type": "narrate",
+      "text": "Lakerek's cannons fall silent. Out of orbital strikes, he gives up."
+    },
+    {
+      "type": "say",
+      "speaker": "Lakerek",
+      "color": "dark_red",
+      "text": "[placeholder] Go on, then."
+    },
+    {
+      "type": "despawn",
+      "bots": [
+        "Lakerek"
+      ]
+    },
+    {
+      "type": "narrate",
+      "text": "Wemmbu finishes Lakerek and takes his gear."
+    },
+    {
+      "type": "command",
+      "command": "give {player} minecraft:totem_of_undying 2"
+    },
+    {
+      "type": "command",
+      "command": "give {player} minecraft:golden_apple 32"
+    },
+    {
+      "type": "command",
+      "command": "give {player} minecraft:ender_pearl 16"
+    },
+    {
+      "type": "say",
+      "speaker": "mxsterwu",
+      "color": "aqua",
+      "text": "[placeholder] You shouldn't have done that."
+    },
+    {
+      "type": "despawn",
+      "bots": [
+        "mxsterwu"
+      ]
+    },
+    {
+      "type": "narrate",
+      "text": "Wemmbu kills mxsterwu too."
+    },
+    {
+      "type": "despawn",
+      "bots": [
+        "Burgle5"
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "note",
+      "text": "Part 4: the second attack. Lakerek's castle happens before this; not playable yet."
+    },
+    {
+      "type": "part",
+      "number": 4,
       "title": "The Second Attack"
     },
     {
@@ -212,11 +411,11 @@
     },
     {
       "type": "note",
-      "text": "Part 4: the Spikelands. Wemmbu no longer has his mace here (Sharpness took it)."
+      "text": "Part 5: the Spikelands. Wemmbu no longer has his mace here (Sharpness took it)."
     },
     {
       "type": "part",
-      "number": 4,
+      "number": 5,
       "title": "The Spikelands"
     },
     {
