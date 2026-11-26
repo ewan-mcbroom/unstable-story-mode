@@ -277,10 +277,24 @@ public final class EpisodeSession {
             }
             case "find_arena" -> {
                 // Find open, fairly flat ground for this scene and put the player in the middle of it.
-                BlockPos arena = ScenePlacer.findArena(player.level(), player.blockPosition(),
-                        int_(s, "search", 96), int_(s, "size", 16), int_(s, "max_step", 3));
+                // "into_farlands": first go this many blocks further into the Far Lands
+                // (away from the world centre), and face that way.
+                BlockPos from = player.blockPosition();
+                float faceYaw = player.getYRot();
+                int into = int_(s, "into_farlands", 0);
+                if (into > 0) {
+                    boolean alongX = Math.abs(from.getX()) >= Math.abs(from.getZ());
+                    int dirX = alongX ? Integer.signum(from.getX()) : 0;
+                    int dirZ = alongX ? 0 : Integer.signum(from.getZ());
+                    from = from.offset(dirX * into, 0, dirZ * into);
+                    // Minecraft yaw: 0 faces +Z, 90 faces -X, -90 faces +X, 180 faces -Z.
+                    faceYaw = alongX ? (dirX > 0 ? -90f : 90f) : (dirZ > 0 ? 0f : 180f);
+                    ScenePlacer.loadArea(player.level(), from, int_(s, "search", 48));
+                }
+                BlockPos arena = ScenePlacer.findArena(player.level(), from,
+                        int_(s, "search", 48), int_(s, "size", 16), int_(s, "max_step", 3));
                 if (arena != null) {
-                    anchorYaw = player.getYRot();
+                    anchorYaw = faceYaw;
                     VexBridge.runRaw(server, "tp " + name + " " + (arena.getX() + 0.5) + " " + arena.getY() + " "
                             + (arena.getZ() + 0.5) + " " + anchorYaw + " 0");
                     anchor = arena;

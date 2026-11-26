@@ -33,7 +33,9 @@
     {
       "type": "find_arena",
       "size": 20,
-      "max_step": 4
+      "max_step": 4,
+      "into_farlands": 96,
+      "search": 48
     },
     {
       "type": "spawn",
@@ -219,7 +221,9 @@
     {
       "type": "find_arena",
       "size": 14,
-      "max_step": 5
+      "max_step": 5,
+      "into_farlands": 96,
+      "search": 48
     },
     {
       "type": "command",

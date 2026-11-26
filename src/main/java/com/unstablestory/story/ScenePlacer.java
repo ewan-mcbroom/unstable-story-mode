@@ -11,6 +11,17 @@ import net.minecraft.world.level.levelgen.Heightmap;
 final class ScenePlacer {
     private ScenePlacer() {}
 
+    /** Make sure the chunks around a spot exist (generating them if needed) before searching there. */
+    static void loadArea(Level level, BlockPos centre, int radius) {
+        int c0x = (centre.getX() - radius) >> 4, c1x = (centre.getX() + radius) >> 4;
+        int c0z = (centre.getZ() - radius) >> 4, c1z = (centre.getZ() + radius) >> 4;
+        for (int cx = c0x; cx <= c1x; cx++) {
+            for (int cz = c0z; cz <= c1z; cz++) {
+                level.getChunk(cx, cz);
+            }
+        }
+    }
+
     /** Ground a player or bot can stand on: solid below, two free blocks, no water or lava. */
     static boolean standable(Level level, BlockPos feet) {
         BlockPos below = feet.below();
