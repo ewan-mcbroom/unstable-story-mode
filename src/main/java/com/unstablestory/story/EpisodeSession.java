@@ -275,6 +275,26 @@ public final class EpisodeSession {
                 anchorYaw = player.getYRot();
                 VexBridge.debug(server, "Story anchor moved to " + anchor.toShortString());
             }
+            case "find_border" -> {
+                // Stand on top of the terrain at the edge of a biome (e.g. the Spikelands), facing into it.
+                int search = int_(s, "search", 160);
+                ScenePlacer.loadArea(player.level(), player.blockPosition(), search);
+                java.util.Set<String> seen = new java.util.TreeSet<>();
+                ScenePlacer.Border border = ScenePlacer.findBorder(player.level(), player.blockPosition(), search,
+                        str(s, "biome", "spike"), seen);
+                VexBridge.debug(server, "Biomes nearby: " + String.join(", ", seen));
+                if (border != null) {
+                    anchor = border.feet();
+                    anchorYaw = border.yaw();
+                    VexBridge.runRaw(server, "tp " + name + " " + (anchor.getX() + 0.5) + " " + anchor.getY() + " "
+                            + (anchor.getZ() + 0.5) + " " + anchorYaw + " 0");
+                    VexBridge.debug(server, "Scene placed at the " + str(s, "biome", "spike") + " border, " + anchor.toShortString());
+                } else {
+                    anchor = player.blockPosition();
+                    anchorYaw = player.getYRot();
+                    VexBridge.debug(server, "No '" + str(s, "biome", "spike") + "' border found; the scene stays where you are");
+                }
+            }
             case "find_arena" -> {
                 // Find open, fairly flat ground for this scene and put the player in the middle of it.
                 // "into_farlands": first go this many blocks further into the Far Lands

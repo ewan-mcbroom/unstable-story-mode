@@ -219,11 +219,13 @@
       "ticks": 60
     },
     {
-      "type": "find_arena",
-      "size": 14,
-      "max_step": 5,
-      "into_farlands": 96,
-      "search": 48
+      "type": "note",
+      "text": "Video: Wemmbu stands on top of the normal Far Lands right next to the Spikelands border; the Avengers run at him from behind, about 30 blocks away."
+    },
+    {
+      "type": "find_border",
+      "biome": "spike",
+      "search": 160
     },
     {
       "type": "command",
@@ -244,7 +246,7 @@
     },
     {
       "type": "narrate",
-      "text": "The Spikelands. Every Avenger is here."
+      "text": "Wemmbu waits on top of the Far Lands, at the edge of the Spikelands. Behind him, the Avengers are coming."
     },
     {
       "type": "spawn",
@@ -252,43 +254,43 @@
         {
           "name": "Jaden_MAN",
           "kit": "jaden_man_farlands",
-          "x": 18,
+          "x": -30,
           "z": 0
         },
         {
           "name": "FlameFrags",
           "kit": "flamefrags_avengers",
-          "x": 18,
+          "x": -30,
           "z": 4
         },
         {
           "name": "WyLL",
           "kit": "wyll_farlands",
-          "x": 18,
+          "x": -30,
           "z": -4
         },
         {
           "name": "Fantst",
           "kit": "fantst_farlands",
-          "x": 20,
+          "x": -32,
           "z": 8
         },
         {
           "name": "Baablu",
           "kit": "baablu_farlands",
-          "x": 20,
+          "x": -32,
           "z": -8
         },
         {
           "name": "Spongs",
           "kit": "spongs_willsion_farlands",
-          "x": 22,
+          "x": -34,
           "z": 2
         },
         {
           "name": "Willsion",
           "kit": "spongs_willsion_farlands",
-          "x": 22,
+          "x": -34,
           "z": -2
         }
       ]
