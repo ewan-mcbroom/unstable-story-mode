@@ -278,7 +278,8 @@ public final class EpisodeSession {
             case "find_border" -> {
                 // Stand on top of the terrain at the edge of a biome (e.g. the Spikelands), facing into it.
                 int search = int_(s, "search", 160);
-                ScenePlacer.loadArea(player.level(), player.blockPosition(), search);
+                // Generate up to 64 blocks around; further out, only already-loaded ground is searched.
+                ScenePlacer.loadArea(player.level(), player.blockPosition(), Math.min(search, 64));
                 java.util.Set<String> seen = new java.util.TreeSet<>();
                 ScenePlacer.Border border = ScenePlacer.findBorder(player.level(), player.blockPosition(), search,
                         str(s, "biome", "spike"), seen);
@@ -309,7 +310,7 @@ public final class EpisodeSession {
                     from = from.offset(dirX * into, 0, dirZ * into);
                     // Minecraft yaw: 0 faces +Z, 90 faces -X, -90 faces +X, 180 faces -Z.
                     faceYaw = alongX ? (dirX > 0 ? -90f : 90f) : (dirZ > 0 ? 0f : 180f);
-                    ScenePlacer.loadArea(player.level(), from, int_(s, "search", 48));
+                    ScenePlacer.loadArea(player.level(), from, Math.min(int_(s, "search", 48), 64));
                 }
                 BlockPos arena = ScenePlacer.findArena(player.level(), from,
                         int_(s, "search", 48), int_(s, "size", 16), int_(s, "max_step", 3));
